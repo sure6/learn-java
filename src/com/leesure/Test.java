@@ -1,4 +1,4 @@
-package com.leesure.controllers;
+package com.leesure;
 
 public class Test {
 
