@@ -1,3 +1,5 @@
+package com.ch09;
+
 import javax.swing.*;
 
 public class JLabelTutorial {

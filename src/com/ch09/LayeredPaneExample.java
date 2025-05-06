@@ -19,7 +19,7 @@ public class LayeredPaneExample {
         // 添加到不同层
         layeredPane.add(panel1, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(panel2, JLayeredPane.PALETTE_LAYER);
-        layeredPane.add(panel3, new Integer(250)); // 自定义层
+        layeredPane.add(panel3, 250); // 自定义层
 
         frame.setVisible(true);
     }
