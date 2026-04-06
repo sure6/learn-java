@@ -20,12 +20,12 @@ public class Example8_1 {
         String hi="好";
         String testTwo= you +hi;
         address = System.identityHashCode("你");
-        System.out.printf("\"你\"的引用：%s\n",address);
-        address = System.identityHashCode("好");
-        System.out.printf("\"好\"的引用：%s\n",address);
-        address = System.identityHashCode(testTwo);
-        System.out.printf("testTwo的引用：%s\n",address);
-        System.out.println(hello == testTwo); // 你用引用的方式进行字符串相加，最后得到一个新的字符串
+//        System.out.printf("\"你\"的引用：%s\n",address);
+//        address = System.identityHashCode("好");
+//        System.out.printf("\"好\"的引用：%s\n",address);
+//        address = System.identityHashCode(testTwo);
+//        System.out.printf("testTwo的引用：%s\n",address);
+//        System.out.println(hello == testTwo); // 你用引用的方式进行字符串相加，最后得到一个新的字符串
 
     }
 }

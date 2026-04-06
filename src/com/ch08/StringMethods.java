@@ -39,7 +39,7 @@ public class StringMethods {
         System.out.println(Integer.toBinaryString(a));// 转换成2进制 1101
         System.out.println(Integer.toHexString(a));// 16进制
 
-        String s7="F:\\第11周\\ch08";
+        String s7="F:\\第11周\\com\\ch08";
         String s6 = s7.replaceAll("\\\\", "#");
         System.out.println(s6);
         String[] s = s7.split("\\\\");
