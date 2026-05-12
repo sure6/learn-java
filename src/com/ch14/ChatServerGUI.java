@@ -21,22 +21,22 @@ public class ChatServerGUI {
     }
 
     private void initialize() {
-        // åˆ›å»ºä¸»çª—å£
-        frame = new JFrame("èŠå¤©æœåŠ¡å™¨");
+        // ´´½¨Ö÷´°¿Ú
+        frame = new JFrame("ÁÄÌì·şÎñÆ÷");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
         frame.setLayout(new BorderLayout());
 
-        // æ—¥å¿—åŒºåŸŸ
+        // ÈÕÖ¾ÇøÓò
         logArea = new JTextArea();
         logArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(logArea);
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        // æ§åˆ¶é¢æ¿
+        // ¿ØÖÆÃæ°å
         JPanel controlPanel = new JPanel();
-        startButton = new JButton("å¯åŠ¨æœåŠ¡å™¨");
-        stopButton = new JButton("åœæ­¢æœåŠ¡å™¨");
+        startButton = new JButton("Æô¶¯·şÎñÆ÷");
+        stopButton = new JButton("Í£Ö¹·şÎñÆ÷");
         stopButton.setEnabled(false);
 
         startButton.addActionListener(new ActionListener() {
@@ -61,7 +61,7 @@ public class ChatServerGUI {
             isRunning = true;
             startButton.setEnabled(false);
             stopButton.setEnabled(true);
-            logMessage("æœåŠ¡å™¨å·²å¯åŠ¨ï¼Œç›‘å¬ç«¯å£: " + port);
+            logMessage("·şÎñÆ÷ÒÑÆô¶¯£¬¼àÌı¶Ë¿Ú: " + port);
 
             new Thread(new Runnable(){
                 @Override
@@ -75,13 +75,13 @@ public class ChatServerGUI {
                         }
                     } catch (IOException e) {
                         if (isRunning) {
-                            logMessage("æœåŠ¡å™¨å¼‚å¸¸: " + e.getMessage());
+                            logMessage("·şÎñÆ÷Òì³£: " + e.getMessage());
                         }
                     }
                 }
             }).start();
         } catch (IOException e) {
-            logMessage("æ— æ³•å¯åŠ¨æœåŠ¡å™¨: " + e.getMessage());
+            logMessage("ÎŞ·¨Æô¶¯·şÎñÆ÷: " + e.getMessage());
         }
     }
 
@@ -94,11 +94,11 @@ public class ChatServerGUI {
             if (serverSocket != null && !serverSocket.isClosed()) {
                 serverSocket.close();
             }
-            logMessage("æœåŠ¡å™¨å·²åœæ­¢");
+            logMessage("·şÎñÆ÷ÒÑÍ£Ö¹");
             startButton.setEnabled(true);
             stopButton.setEnabled(false);
         } catch (IOException e) {
-            logMessage("åœæ­¢æœåŠ¡å™¨æ—¶å‡ºé”™: " + e.getMessage());
+            logMessage("Í£Ö¹·şÎñÆ÷Ê±³ö´í: " + e.getMessage());
         }
     }
 
@@ -124,8 +124,8 @@ public class ChatServerGUI {
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
                 clientName = in.readLine();
-                logMessage(clientName + " åŠ å…¥äº†èŠå¤©å®¤");
-                broadcast(clientName + " åŠ å…¥äº†èŠå¤©å®¤", this);
+                logMessage(clientName + " ¼ÓÈëÁËÁÄÌìÊÒ");
+                broadcast(clientName + " ¼ÓÈëÁËÁÄÌìÊÒ", this);
 
                 String inputLine;
                 while ((inputLine = in.readLine()) != null) {
@@ -134,17 +134,17 @@ public class ChatServerGUI {
                     broadcast(message, this);
                 }
             } catch (IOException e) {
-                logMessage(clientName + " å¼‚å¸¸æ–­å¼€: " + e.getMessage());
+                logMessage(clientName + " Òì³£¶Ï¿ª: " + e.getMessage());
             } finally {
                 try {
                     clientHandlers.remove(this);
                     if (clientName != null) {
-                        logMessage(clientName + " ç¦»å¼€äº†èŠå¤©å®¤");
-                        broadcast(clientName + " ç¦»å¼€äº†èŠå¤©å®¤", this);
+                        logMessage(clientName + " Àë¿ªÁËÁÄÌìÊÒ");
+                        broadcast(clientName + " Àë¿ªÁËÁÄÌìÊÒ", this);
                     }
                     close();
                 } catch (Exception e) {
-                    logMessage("æ¸…ç†å®¢æˆ·ç«¯èµ„æºæ—¶å‡ºé”™: " + e.getMessage());
+                    logMessage("ÇåÀí¿Í»§¶Ë×ÊÔ´Ê±³ö´í: " + e.getMessage());
                 }
             }
         }

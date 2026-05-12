@@ -1,61 +1,62 @@
-package com.ch08;
-
-public class StringMethods {
-    public static void main(String[] args) {
-       String s1="æ¡‚æ—ä¿¡æ¯ç§‘æŠ€å­¦é™¢ç§‘æŠ€ç§‘æŠ€";
-       String s2=new String("æ¡‚æ—ä¿¡æ¯ç§‘æŠ€å­¦é™¢");
-
-       String pic="giit.png";
-//       String a="\hello";
-
-       System.out.println(s1.length());
-       // æ¯”è¾ƒStringå†…å®¹ å¿…é¡»ä½¿ç”¨equalsæ–¹æ³•ï¼Œä¸èƒ½ä½¿ç”¨==
-        System.out.println(s1.equals(s2)); // equals æ¯”è¾ƒ2ä¸ªå¯¹è±¡ï¼Œé‡å†™equals é‡å†™hashcode
-
-        System.out.println(s1.startsWith("æ¡‚æ—å¸‚"));
-        System.out.println(s1.endsWith("å­¦é™¢"));
-        System.out.println(s1.endsWith(".png"));
-
-        String s3="abd"; // a b d-c char //ASCII
-        String s4="abc";
-        // å¦‚æœå¤§äºs4åˆ™è¿”å›æ­£å€¼
-        System.out.println(s3.compareTo(s4));
-
-        System.out.println(s1.contains("ä¿¡æ¯"));
-
-        System.out.println(s1.indexOf("ç§‘æŠ€"));// åˆ¤æ–­ç¬¬ä¸€æ¬¡å‡ºç°ä½ç½® //4
-        System.out.println(s1.indexOf("ç§‘æŠ€",6));//ä»fromindexåå¼€å§‹å‡ºç°ç¬¬ä¸€æ¬¡çš„ç´¢å¼•ä½ç½® //8
-
-        System.out.println(s1.lastIndexOf("ä¿¡æ¯"));
-
-        System.out.println(s1.substring(1,3));// è¿”å›æ–°å­—ç¬¦ä¸²ï¼Œ[start,end)
-        String s5="    æ¡‚æ—ä¿¡æ¯ç§‘æŠ€å­¦é™¢   ";
-        System.out.println(s5.trim());
-
-        String num1="123";
-        int a =Integer.parseInt(num1);
-        String.valueOf(a);
-        // ä¾‹å­4è‡ªå·±å»åš
-        System.out.println(Integer.toBinaryString(a));// è½¬æ¢æˆ2è¿›åˆ¶ 1101
-        System.out.println(Integer.toHexString(a));// 16è¿›åˆ¶
-
-        String s7="F:\\ç¬¬11å‘¨\\com\\ch08";
-        String s6 = s7.replaceAll("\\\\", "#");
-        System.out.println(s6);
-        String[] s = s7.split("\\\\");
-        for (String str:s){
-            System.out.println(str);
-        }
-
-        System.out.println("-----------");
-        char[] arr={'æ¡‚','æ—','å¸‚'};
-        System.out.println(new String(arr,0,2));
-        // å¦‚ä½•å¤§é‡è¦å¯¹å­—ç¬¦ä¸²è¿›è¡Œä¿®æ”¹æ“ä½œï¼Œç”¨stringbuffer(çº¿ç¨‹å®‰å…¨ï¼‰æˆ–è€…stringBuilderï¼ˆçº¿ç¨‹ä¸å®‰å…¨ï¼‰ï¼Œ å¦‚æœstring ,æµªè´¹å†…å­˜ç©ºé—´ï¼Œå¢åŠ ç©ºé—´å¤æ‚åº¦
-        StringBuffer buffer = new StringBuffer();
-        StringBuilder sb=new StringBuilder();
-        StringBuilder append1 = sb.append("æ¡‚").append("æ—");
-        StringBuffer append = buffer.append("a").append("p").append("p");
-        System.out.println(append.toString());
-        System.out.println(append1.toString());
-    }
-}
+//package com.ch08;
+//
+//public class StringMethods {
+//    public static void main(String[] args) {
+//       String s1="¹ğÁÖĞÅÏ¢¿Æ¼¼Ñ§Ôº¿Æ¼¼¿Æ¼¼";
+//       String s2=new String("¹ğÁÖĞÅÏ¢¿Æ¼¼Ñ§Ôº");
+//
+//       String pic="giit.png";
+////       String a="\hello";
+//
+//       System.out.println(s1.length());
+//       // ±È½ÏStringÄÚÈİ ±ØĞëÊ¹ÓÃequals·½·¨£¬²»ÄÜÊ¹ÓÃ==
+//        System.out.println(s1.equals(s2)); // equals ±È½Ï2¸ö¶ÔÏó£¬ÖØĞ´equals ÖØĞ´hashcode
+//
+//        System.out.println(s1.startsWith("¹ğÁÖÊĞ"));
+//        System.out.println(s1.endsWith("Ñ§Ôº"));
+//        System.out.println(s1.endsWith(".png"));
+//
+//        String s3="abd"; // a b d-c char //ASCII
+//        String s4="abc";
+//        // Èç¹û´óÓÚs4Ôò·µ»ØÕıÖµ
+//        System.out.println(s3.compareTo(s4));
+//
+//        System.out.println(s1.contains("ĞÅÏ¢"));
+//
+//        System.out.println(s1.indexOf("¿Æ¼¼"));// ÅĞ¶ÏµÚÒ»´Î³öÏÖÎ»ÖÃ //4
+//        System.out.println(s1.indexOf("¿Æ¼¼",6));//´Ófromindexºó¿ªÊ¼³öÏÖµÚÒ»´ÎµÄË÷ÒıÎ»ÖÃ //8
+//
+//        System.out.println(s1.lastIndexOf("ĞÅÏ¢"));
+//
+//        System.out.println(s1.substring(1,3));// ·µ»ØĞÂ×Ö·û´®£¬[start,end)
+//        String s5="    ¹ğÁÖĞÅÏ¢¿Æ¼¼Ñ§Ôº   ";
+//        System.out.println(s5.trim());
+//
+//        String num1="123";
+//        int a =Integer.parseInt(num1);
+//        String.valueOf(a);
+//        // Àı×Ó4×Ô¼ºÈ¥×ö
+//        System.out.println(Integer.toBinaryString(a));// ×ª»»³É2½øÖÆ 1101
+//        System.out.println(Integer.toHexString(a));// 16½øÖÆ
+//
+////     F:\µÚ11ÖÜ\com\ch08
+//        String s7="F:\\µÚ11ÖÜ\\com\\ch08";
+//        String s6 = s7.replaceAll("\\\\", "#");
+//        System.out.println(s6);
+//        String[] s = s7.split("\\\\");
+//        for (String str:s){
+//            System.out.println(str);
+//        }
+//
+//        System.out.println("-----------");
+//        char[] arr={'¹ğ','ÁÖ','ÊĞ'};
+//        System.out.println(new String(arr,0,2));
+//        // ÈçºÎ´óÁ¿Òª¶Ô×Ö·û´®½øĞĞĞŞ¸Ä²Ù×÷£¬ÓÃstringbuffer(Ïß³Ì°²È«£©»òÕßstringBuilder£¨Ïß³Ì²»°²È«£©£¬ Èç¹ûstring ,ÀË·ÑÄÚ´æ¿Õ¼ä£¬Ôö¼Ó¿Õ¼ä¸´ÔÓ¶È
+//        StringBuffer buffer = new StringBuffer();
+//        StringBuilder sb=new StringBuilder();
+//        StringBuilder append1 = sb.append("¹ğ").append("ÁÖ");
+//        StringBuffer append = buffer.append("a").append("p").append("p");
+//        System.out.println(append.toString());
+//        System.out.println(append1.toString());
+//    }
+//}

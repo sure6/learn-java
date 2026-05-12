@@ -3,38 +3,38 @@ package com.ch08;
 public class Example8_2 {
     public static void main(String[] args) {
         String s1,s2;
-        s1=new String("å¤©é“é…¬å‹¤");
-        s2=new String("å¤©é“é…¬å‹¤");
+        s1=new String("ÌìµÀ³êÇÚ");
+        s2=new String("ÌìµÀ³êÇÚ");
         System.out.println(s1);
         System.out.println(s2);
-        System.out.println("äºŒè€…çš„å®ä½“ç›¸åŒå—ï¼š"+s1.equals(s2));
+        System.out.println("¶şÕßµÄÊµÌåÏàÍ¬Âğ£º"+s1.equals(s2));
 
         int addressS1=System.identityHashCode(s1);
         int addressS2=System.identityHashCode(s2);
-        System.out.printf("Stringå¯¹è±¡s1å’Œs2çš„å¼•ç”¨åˆ†åˆ«æ˜¯ %x,%x\n",addressS1,addressS2);
-        System.out.printf("äºŒè€…çš„å¼•ç”¨ç›¸åŒå—ï¼š%b\n",s1==s2);
+        System.out.printf("String¶ÔÏós1ºÍs2µÄÒıÓÃ·Ö±ğÊÇ %x,%x\n",addressS1,addressS2);
+        System.out.printf("¶şÕßµÄÒıÓÃÏàÍ¬Âğ£º%b\n",s1==s2);
 
         String s3,s4;
         s3="we are students";
         s4=new String("we are students");
         System.out.println(s3);
         System.out.println(s4);
-        System.out.println("äºŒè€…çš„å®ä½“ç›¸åŒå—ï¼š"+s3.equals(s4));
+        System.out.println("¶şÕßµÄÊµÌåÏàÍ¬Âğ£º"+s3.equals(s4));
         int addressS3=System.identityHashCode(s3);
         int addressS4=System.identityHashCode(s4);
-        System.out.printf("Stringå¯¹è±¡s3å’Œs4çš„å¼•ç”¨åˆ†åˆ«æ˜¯ %x,%x\n",addressS3,addressS4);
-        System.out.printf("äºŒè€…çš„å¼•ç”¨ç›¸åŒå—ï¼š%b\n",s3==s4);
+        System.out.printf("String¶ÔÏós3ºÍs4µÄÒıÓÃ·Ö±ğÊÇ %x,%x\n",addressS3,addressS4);
+        System.out.printf("¶şÕßµÄÒıÓÃÏàÍ¬Âğ£º%b\n",s3==s4);
 
         String s5,s6;
-        s5="å‹‡è€…æ— æ•Œ";
-        s6="å‹‡è€…æ— æ•Œ";
+        s5="ÓÂÕßÎŞµĞ";
+        s6="ÓÂÕßÎŞµĞ";
         System.out.println(s5);
         System.out.println(s6);
-        System.out.println("äºŒè€…çš„å®ä½“ç›¸åŒå—ï¼š"+s5.equals(s6));
+        System.out.println("¶şÕßµÄÊµÌåÏàÍ¬Âğ£º"+s5.equals(s6));
         int addressS5=System.identityHashCode(s5);
         int addressS6=System.identityHashCode(s6);
-        System.out.printf("Stringå¯¹è±¡s5å’Œs6çš„å¼•ç”¨åˆ†åˆ«æ˜¯ %x,%x\n",addressS5,addressS6);
-        System.out.printf("äºŒè€…çš„å¼•ç”¨ç›¸åŒå—ï¼š%b\n",s5==s6);
+        System.out.printf("String¶ÔÏós5ºÍs6µÄÒıÓÃ·Ö±ğÊÇ %x,%x\n",addressS5,addressS6);
+        System.out.printf("¶şÕßµÄÒıÓÃÏàÍ¬Âğ£º%b\n",s5==s6);
 
     }
 }

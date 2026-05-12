@@ -2,30 +2,29 @@ package com.ch08;
 
 public class Example8_1 {
     public static void main(String[] args) {
-        String hello="ä½ å¥½";// å†…å­˜åˆ›å»º1ä¸ªå¯¹è±¡
-//        String hello2=new String("ä½ å¥½"); // å†…å­˜åˆ›å»º2ä¸ªå¯¹è±¡
-        String testOne="ä½ "+"å¥½";// åˆ›å»ºäº†æ–°çš„å¯¹è±¡ä½ å¥½ ä½ ï¼Œå¥½ä»¥åŠä½ å¥½ 3ä¸ªä¸åŒStringå¯¹è±¡
-//        char ch='ä½ ';
-        int address = System.identityHashCode("ä½ å¥½");
-//        System.out.printf("\"ä½ å¥½\"çš„å¼•ç”¨ï¼š%s\n",address);
-//        address = System.identityHashCode(hello);
-//        System.out.printf("helloçš„å¼•ç”¨ï¼š%s\n",address);
-//        address = System.identityHashCode(testOne);
-//        System.out.printf("testOneçš„å¼•ç”¨ï¼š%s\n",address);
-//        System.out.println(hello == testOne);
-//        System.out.println("ä½ å¥½" == testOne);
-//        System.out.println("ä½ å¥½" == hello);
+        String hello="ÄãºÃ";// ÄÚ´æ´´½¨1¸ö¶ÔÏó
+//        String hello2=new String("ÄãºÃ"); // ÄÚ´æ´´½¨2¸ö¶ÔÏó
+        String testOne="Äã"+"ºÃ";// ±àÒëÆ÷ÓÅ»¯£¬Ö±½ÓÓÅ»¯³É¡°ÄãºÃ¡±
+        int address = System.identityHashCode("ÄãºÃ");
+        System.out.printf("\"ÄãºÃ\"µÄÒıÓÃ£º%s\n",address);
+        address = System.identityHashCode(hello);
+        System.out.printf("helloµÄÒıÓÃ£º%s\n",address);
+        address = System.identityHashCode(testOne);
+        System.out.printf("testOneµÄÒıÓÃ£º%s\n",address);
+        System.out.println(hello == testOne);
+        System.out.println("ÄãºÃ" == testOne);
+        System.out.println("ÄãºÃ" == hello);
 
-        String you="ä½ ";
-        String hi="å¥½";
+        String you="Äã";
+        String hi="ºÃ";
         String testTwo= you +hi;
-        address = System.identityHashCode("ä½ ");
-//        System.out.printf("\"ä½ \"çš„å¼•ç”¨ï¼š%s\n",address);
-//        address = System.identityHashCode("å¥½");
-//        System.out.printf("\"å¥½\"çš„å¼•ç”¨ï¼š%s\n",address);
-//        address = System.identityHashCode(testTwo);
-//        System.out.printf("testTwoçš„å¼•ç”¨ï¼š%s\n",address);
-//        System.out.println(hello == testTwo); // ä½ ç”¨å¼•ç”¨çš„æ–¹å¼è¿›è¡Œå­—ç¬¦ä¸²ç›¸åŠ ï¼Œæœ€åå¾—åˆ°ä¸€ä¸ªæ–°çš„å­—ç¬¦ä¸²
+        address = System.identityHashCode("Äã");
+        System.out.printf("\"Äã\"µÄÒıÓÃ£º%s\n",address);
+        address = System.identityHashCode("ºÃ");
+        System.out.printf("\"ºÃ\"µÄÒıÓÃ£º%s\n",address);
+        address = System.identityHashCode(testTwo);
+        System.out.printf("testTwoµÄÒıÓÃ£º%s\n",address);
+        System.out.println(hello == testTwo); // ÄãÓÃÒıÓÃµÄ·½Ê½½øĞĞ×Ö·û´®Ïà¼Ó£¬×îºóµÃµ½Ò»¸öĞÂµÄ×Ö·û´®
 
     }
 }

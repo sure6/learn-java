@@ -7,7 +7,7 @@ import java.net.Socket;
 
 public class Client {
     public static void main(String[] args) {
-        String[] mess={"鐝犵﹩鏈楃帥宄扮殑楂樺害鏄灏戯紵","妗傛灄鏈夊灏戜釜5A绾ф櫙鍖猴紵","骞胯タ澹棌鑷不鍖洪搴滄槸鍝釜鍩庡競"};
+        String[] mess={"珠穆朗玛峰的高度是多少？","桂林有多少个5A级景区？","广西壮族自治区首府是哪个城市"};
         Socket socket=null;
         DataInputStream in=null;
         DataOutputStream out=null;
@@ -18,11 +18,11 @@ public class Client {
             for(int i=0;i<mess.length;i++){
                 out.writeUTF(mess[i]);
                 String s = in.readUTF();
-                System.out.println("瀹㈡埛鏀跺埌鏈嶅姟鍣ㄧ殑鍥炵瓟:"+s);
+                System.out.println("客户收到服务器的回答:"+s);
                 Thread.sleep(1000);
             }
         } catch (Exception e) {
-            System.out.println("鏈嶅姟鍣ㄥ凡鏂紑"+e);
+            System.out.println("服务器已断开"+e);
         }
     }
 }

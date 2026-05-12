@@ -25,23 +25,23 @@ public class ChatClientGUI {
     }
 
     public void initialize() {
-        // åˆ›å»ºä¸»çª—å£
-        frame = new JFrame("èŠå¤©å®¢æˆ·ç«¯");
+        // ´´½¨Ö÷´°¿Ú
+        frame = new JFrame("ÁÄÌì¿Í»§¶Ë");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 400);
         frame.setLayout(new BorderLayout());
 
-        // èŠå¤©åŒºåŸŸ
+        // ÁÄÌìÇøÓò
         chatArea = new JTextArea();
         chatArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(chatArea);
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        // è¾“å…¥é¢æ¿
+        // ÊäÈëÃæ°å
         JPanel inputPanel = new JPanel(new BorderLayout());
         inputField = new JTextField();
         inputField.setEnabled(false);
-        sendButton = new JButton("å‘é€");
+        sendButton = new JButton("·¢ËÍ");
         sendButton.setEnabled(false);
 
         inputField.addActionListener(e -> sendMessage());
@@ -50,17 +50,17 @@ public class ChatClientGUI {
         inputPanel.add(inputField, BorderLayout.CENTER);
         inputPanel.add(sendButton, BorderLayout.EAST);
 
-        // è¿æ¥é¢æ¿
+        // Á¬½ÓÃæ°å
         JPanel connectPanel = new JPanel(new BorderLayout());
-        nameField = new JTextField("è¯·è¾“å…¥æ˜µç§°");
-        connectButton = new JButton("è¿æ¥æœåŠ¡å™¨");
+        nameField = new JTextField("ÇëÊäÈëêÇ³Æ");
+        connectButton = new JButton("Á¬½Ó·şÎñÆ÷");
 
         connectButton.addActionListener(e -> connectToServer());
 
         connectPanel.add(nameField, BorderLayout.CENTER);
         connectPanel.add(connectButton, BorderLayout.EAST);
 
-        // åº•éƒ¨é¢æ¿
+        // µ×²¿Ãæ°å
         JPanel bottomPanel = new JPanel(new BorderLayout());
         bottomPanel.add(connectPanel, BorderLayout.NORTH);
         bottomPanel.add(inputPanel, BorderLayout.SOUTH);
@@ -72,7 +72,7 @@ public class ChatClientGUI {
     private void connectToServer() {
         clientName = nameField.getText().trim();
         if (clientName.isEmpty()) {
-            chatArea.append("è¯·è¾“å…¥æœ‰æ•ˆçš„æ˜µç§°\n");
+            chatArea.append("ÇëÊäÈëÓĞĞ§µÄêÇ³Æ\n");
             chatArea.setCaretPosition(chatArea.getDocument().getLength());
 
             return;
@@ -83,19 +83,19 @@ public class ChatClientGUI {
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            // å‘é€æ˜µç§°
+            // ·¢ËÍêÇ³Æ
             out.println(clientName);
 
-            // å¯ç”¨è¾“å…¥
+            // ÆôÓÃÊäÈë
             inputField.setEnabled(true);
             sendButton.setEnabled(true);
             nameField.setEnabled(false);
             connectButton.setEnabled(false);
 
-            chatArea.append("å·²è¿æ¥åˆ°æœåŠ¡å™¨ï¼Œå¯ä»¥å¼€å§‹èŠå¤©äº†ï¼\n");
+            chatArea.append("ÒÑÁ¬½Óµ½·şÎñÆ÷£¬¿ÉÒÔ¿ªÊ¼ÁÄÌìÁË£¡\n");
             chatArea.setCaretPosition(chatArea.getDocument().getLength());
 
-            // å¯åŠ¨æ¥æ”¶æ¶ˆæ¯çº¿ç¨‹
+            // Æô¶¯½ÓÊÕÏûÏ¢Ïß³Ì
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -106,7 +106,7 @@ public class ChatClientGUI {
                             chatArea.setCaretPosition(chatArea.getDocument().getLength());
                         }
                     } catch (IOException e) {
-                        chatArea.append("ä¸æœåŠ¡å™¨çš„è¿æ¥å·²æ–­å¼€\n");
+                        chatArea.append("Óë·şÎñÆ÷µÄÁ¬½ÓÒÑ¶Ï¿ª\n");
                         chatArea.setCaretPosition(chatArea.getDocument().getLength());
                     } finally {
                         try {
@@ -121,7 +121,7 @@ public class ChatClientGUI {
                 }
             }).start();
         } catch (IOException e) {
-            chatArea.append("è¿æ¥æœåŠ¡å™¨å¤±è´¥: " + e.getMessage() + "\n");
+            chatArea.append("Á¬½Ó·şÎñÆ÷Ê§°Ü: " + e.getMessage() + "\n");
             chatArea.setCaretPosition(chatArea.getDocument().getLength());
         }
     }

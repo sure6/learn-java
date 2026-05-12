@@ -1,13 +1,13 @@
 package com.leesure;
 
 /*
-åŸºæœ¬è¦æ±‚ï¼š
+»ù±¾ÒªÇó£º
 
-1ï¼šå®šä¹‰ç›¸å…³ç±»åŠæ–¹æ³•ï¼Œå®ç°å¤šç§å‡ ä½•å›¾å½¢é¢ç§¯çš„è®¡ç®—ï¼Œè‡³å°‘åŒ…æ‹¬ä¸‰ç§å‡ ä½•å›¾å½¢
+1£º¶¨ÒåÏà¹ØÀà¼°·½·¨£¬ÊµÏÖ¶àÖÖ¼¸ºÎÍ¼ĞÎÃæ»ıµÄ¼ÆËã£¬ÖÁÉÙ°üÀ¨ÈıÖÖ¼¸ºÎÍ¼ĞÎ
 
-2ï¼šä½¿ç”¨åˆ°ç±»å®šä¹‰ã€å¼•ç”¨å‹æ•°æ®å‚æ•°ä¼ é€’ã€æ–¹æ³•é‡è½½ã€è®¿é—®æƒé™ç­‰çŸ¥è¯†ç‚¹ã€‚
+2£ºÊ¹ÓÃµ½Àà¶¨Òå¡¢ÒıÓÃĞÍÊı¾İ²ÎÊı´«µİ¡¢·½·¨ÖØÔØ¡¢·ÃÎÊÈ¨ÏŞµÈÖªÊ¶µã¡£
 
-3ï¼šç¨‹åºè¾“å‡ºåŒ…æ‹¬å­¦å·å’Œå§“å
+3£º³ÌĞòÊä³ö°üÀ¨Ñ§ºÅºÍĞÕÃû
  */
 
 
@@ -16,20 +16,20 @@ import java.math.RoundingMode;
 import java.text.NumberFormat;
 
 class GeometryArea{
-    // è®¡ç®—å‡ ä½•é¢ç§¯å¹¶æ ¹æ®å‚æ•°ç±»å‹è¿›è¡Œé‡è½½æ–¹æ³•ï¼Œ å¹¶å¼•ç”¨äº†å¼•ç”¨å‹æ•°æ®å‚æ•°ä¼ é€’
-    // è®¡ç®—é•¿æ–¹å½¢é¢ç§¯
+    // ¼ÆËã¼¸ºÎÃæ»ı²¢¸ù¾İ²ÎÊıÀàĞÍ½øĞĞÖØÔØ·½·¨£¬ ²¢ÒıÓÃÁËÒıÓÃĞÍÊı¾İ²ÎÊı´«µİ
+    // ¼ÆËã³¤·½ĞÎÃæ»ı
     public static double computeArea(Rectangle rectangle){
         return rectangle.getWidth()*rectangle.getHeight();
     }
-    // è®¡ç®—ä¸‰è§’å½¢é¢ç§¯
+    // ¼ÆËãÈı½ÇĞÎÃæ»ı
     public double computeArea(Triangle triangle){
         return triangle.getBottom()*triangle.getHeight()/2;
     }
-    // è®¡ç®—æ¢¯å½¢é¢ç§¯
+    // ¼ÆËãÌİĞÎÃæ»ı
     public double computeArea(Ladder ladder){
         return (ladder.getBottom()+ladder.getTop())*ladder.getHeight()/2;
     }
-    // è®¡ç®—åœ†å½¢é¢ç§¯
+    // ¼ÆËãÔ²ĞÎÃæ»ı
     public double computeArea(Circle circle){
         return  circle.getRadius()*circle.getRadius()*Math.PI;
     }
@@ -38,10 +38,10 @@ class GeometryArea{
 
 }
 
-// å®šä¹‰é•¿æ–¹å½¢ç±»å’Œæˆå‘˜å˜é‡(ä½“ç°é¢å‘å¯¹è±¡çš„å°è£…æ€§ï¼‰ï¼Œ é˜²æ­¢æˆå‘˜å˜é‡ç›´æ¥è¢«è®¿é—®å’Œä¿®æ”¹
+// ¶¨Òå³¤·½ĞÎÀàºÍ³ÉÔ±±äÁ¿(ÌåÏÖÃæÏò¶ÔÏóµÄ·â×°ĞÔ£©£¬ ·ÀÖ¹³ÉÔ±±äÁ¿Ö±½Ó±»·ÃÎÊºÍĞŞ¸Ä
 class Rectangle{
-    private double width;// å®½
-    private double height;// é«˜
+    private double width;// ¿í
+    private double height;// ¸ß
 
     public double getWidth() {
         return width;
@@ -60,10 +60,10 @@ class Rectangle{
     }
 
 }
-// å®šä¹‰ä¸‰è§’å½¢ç±»å’Œæˆå‘˜å˜é‡
+// ¶¨ÒåÈı½ÇĞÎÀàºÍ³ÉÔ±±äÁ¿
 class Triangle{
-    private double bottom;// ä½
-    private double height;// é«˜
+    private double bottom;// µÍ
+    private double height;// ¸ß
 
     public double getBottom() {
         return bottom;
@@ -82,11 +82,11 @@ class Triangle{
     }
 }
 
-// å®šä¹‰æ¢¯å½¢ç±»å’Œæˆå‘˜å˜é‡
+// ¶¨ÒåÌİĞÎÀàºÍ³ÉÔ±±äÁ¿
 class Ladder{
-    private double bottom; // ä¸‹åº•
-    private double top;// ä¸Šåº•
-    private double height;// é«˜
+    private double bottom; // ÏÂµ×
+    private double top;// ÉÏµ×
+    private double height;// ¸ß
 
     public double getBottom() {
         return bottom;
@@ -113,15 +113,15 @@ class Ladder{
     }
 }
 
-// å®šä¹‰æ¢¯å½¢ç±»å’Œæˆå‘˜å˜é‡
+// ¶¨ÒåÌİĞÎÀàºÍ³ÉÔ±±äÁ¿
 class Circle{
-    private double radius; // åŠå¾„
+    private double radius; // °ë¾¶
 
-    // é‡‡ç”¨æ„é€ æ–¹æ³•ä¼ å€¼
+    // ²ÉÓÃ¹¹Ôì·½·¨´«Öµ
     public Circle(double radius) {
         this.radius = radius;
     }
-    // å¯¹å¤–è®¿é—®æˆå‘˜å±æ€§
+    // ¶ÔÍâ·ÃÎÊ³ÉÔ±ÊôĞÔ
    public double getRadius() {
         return radius;
    }
@@ -129,51 +129,51 @@ class Circle{
 
 
 
-public class ç¬¬å››ç« ä½œä¸šå‚è€ƒç­”æ¡ˆ {
+public class µÚËÄÕÂ×÷Òµ²Î¿¼´ğ°¸ {
 
 
     public static void main(String[] args) {
-        System.out.println("å­¦å·ï¼šxxxxxxxx");
-        System.out.println("å§“åï¼šå¼ ä¸‰");
-        //åˆå§‹åŒ–å‡ ä½•å›¾å½¢å±æ€§
-        Rectangle r = new Rectangle(); //é•¿æ–¹å½¢
+        System.out.println("Ñ§ºÅ£ºxxxxxxxx");
+        System.out.println("ĞÕÃû£ºÕÅÈı");
+        //³õÊ¼»¯¼¸ºÎÍ¼ĞÎÊôĞÔ
+        Rectangle r = new Rectangle(); //³¤·½ĞÎ
         r.setWidth(5.5);
         r.setHeight(10.3);
-        Triangle t = new Triangle(); //ä¸‰è§’å½¢
+        Triangle t = new Triangle(); //Èı½ÇĞÎ
         t.setBottom(3.3);
         t.setHeight(1.5);
-        Ladder l = new Ladder(); // æ¢¯å½¢
+        Ladder l = new Ladder(); // ÌİĞÎ
         l.setTop(3.6);
         l.setHeight(1.5);
         l.setBottom(4.4);
-        Circle c = new Circle(5.0); // åœ†å½¢
+        Circle c = new Circle(5.0); // Ô²ĞÎ
 
         GeometryArea geometryArea = new GeometryArea();
         double circleArea = geometryArea.computeArea(c);
-        double rectangleArea = GeometryArea.computeArea(r);//è°ƒç”¨é™æ€
+        double rectangleArea = GeometryArea.computeArea(r);//µ÷ÓÃ¾²Ì¬
         double triangleArea = geometryArea.computeArea(t);
         double ladderArea = geometryArea.computeArea(l);
-        System.out.println("åœ†å½¢é¢ç§¯ä¸ºï¼š"+circleArea);
-        System.out.println("é•¿æ–¹å½¢é¢ç§¯ä¸ºï¼š"+rectangleArea);
-        System.out.println("ä¸‰è§’å½¢é¢ç§¯ä¸ºï¼š"+triangleArea);
-        System.out.println("æ¢¯å½¢é¢ç§¯ä¸ºï¼š"+ladderArea);
+        System.out.println("Ô²ĞÎÃæ»ıÎª£º"+circleArea);
+        System.out.println("³¤·½ĞÎÃæ»ıÎª£º"+rectangleArea);
+        System.out.println("Èı½ÇĞÎÃæ»ıÎª£º"+triangleArea);
+        System.out.println("ÌİĞÎÃæ»ıÎª£º"+ladderArea);
 
-        // ä¸è®¡ç®—æ€»åˆ†é‡Œï¼šè§£å†³ç²¾åº¦é—®é¢˜
+        // ²»¼ÆËã×Ü·ÖÀï£º½â¾ö¾«¶ÈÎÊÌâ
         BigDecimal bd = new BigDecimal(Double.toString(circleArea));
         bd = bd.setScale(2, RoundingMode.HALF_UP);
-        System.out.println("åœ†å½¢é¢ç§¯ä¸º(å››èˆäº”å…¥ä¿ç•™2ä½å°æ•°)ï¼š"+bd.doubleValue());
+        System.out.println("Ô²ĞÎÃæ»ıÎª(ËÄÉáÎåÈë±£Áô2Î»Ğ¡Êı)£º"+bd.doubleValue());
         BigDecimal bd2 = new BigDecimal(rectangleArea);
         bd2 = bd2.setScale(2, RoundingMode.HALF_UP);
-        System.out.println("é•¿æ–¹å½¢é¢ç§¯ä¸º(å››èˆäº”å…¥ä¿ç•™2ä½å°æ•°)ï¼š"+bd2.doubleValue());
+        System.out.println("³¤·½ĞÎÃæ»ıÎª(ËÄÉáÎåÈë±£Áô2Î»Ğ¡Êı)£º"+bd2.doubleValue());
         BigDecimal bd3 = new BigDecimal(triangleArea);
         bd3 = bd3.setScale(2, RoundingMode.HALF_UP);
-        System.out.println("ä¸‰è§’å½¢é¢ç§¯ä¸º(å››èˆäº”å…¥ä¿ç•™2ä½å°æ•°)ï¼š"+bd3.doubleValue());
+        System.out.println("Èı½ÇĞÎÃæ»ıÎª(ËÄÉáÎåÈë±£Áô2Î»Ğ¡Êı)£º"+bd3.doubleValue());
 
         NumberFormat nf = NumberFormat.getNumberInstance();
         nf.setMaximumFractionDigits(2);
         nf.setMinimumFractionDigits(2);
         String output = nf.format(ladderArea);
-        System.out.println("æ¢¯å½¢é¢ç§¯ä¸º(å››èˆäº”å…¥ä¿ç•™2ä½å°æ•°)ï¼š"+output);
+        System.out.println("ÌİĞÎÃæ»ıÎª(ËÄÉáÎåÈë±£Áô2Î»Ğ¡Êı)£º"+output);
 
 
     }
