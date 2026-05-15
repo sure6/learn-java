@@ -44,6 +44,9 @@ public class OuterClass {
         // 创建一个内部类的实例
         InnerClass inner = outer.new InnerClass(20);
 
+//        第二种写法
+        InnerClass inner2=new OuterClass(10).new InnerClass(20);
+
         // 访问内部类的方法
         inner.innerMethod();
         inner.accessOuterVar();

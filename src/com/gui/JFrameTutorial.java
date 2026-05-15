@@ -1,50 +1,47 @@
-package com.ch10;
+package com.gui;
 
-import com.ch10.controller.StudentController;
-import com.ch10.model.StudentDAO;
-import com.ch10.view.StudentView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-// step 1 è¿™ä¸ªç±»å…·æœ‰çª—å£å±æ€§ è‡ªå®šä¹‰ä¸€ä¸ªç±»ç»§æ‰¿JFrame
+// step 1 Õâ¸öÀà¾ßÓĞ´°¿ÚÊôĞÔ ×Ô¶¨ÒåÒ»¸öÀà¼Ì³ĞJFrame
 public class JFrameTutorial extends JFrame {
 
 	static JFrameTutorial jFrameTutorial;
 	private void init(){
-		//å®šä¹‰å¸ƒå±€
+		//¶¨Òå²¼¾Ö
 		this.setLayout(new FlowLayout());
-		// ä¸‹æ‹‰åˆ—è¡¨ select
+		// ÏÂÀ­ÁĞ±í select
 		JComboBox<String> comboBoxes=new JComboBox<>();
 		comboBoxes.addItem("Java");
 		comboBoxes.addItem("C");
 		comboBoxes.addItem("Python");
 		comboBoxes.addItem("HTML5");
-		// å¤é€‰æ¡†
-		JCheckBox box1 = new JCheckBox("è‹±è¯­");
-		JCheckBox box2 = new JCheckBox("æ•°å­¦");
-		JCheckBox box3= new JCheckBox("è¯­æ–‡");
-		// å•é€‰
-		ButtonGroup buttonGroup = new ButtonGroup();// æŒ‰é’®ç»„å¯¹è±¡ã€‚ å¤šé€‰ä¸€å¿…é¡»è®¾ç½®
-		JRadioButton radioButton1 = new JRadioButton("ç”·");
-		JRadioButton radioButton2 = new JRadioButton("å¥³");
+		// ¸´Ñ¡¿ò
+		JCheckBox box1 = new JCheckBox("Ó¢Óï");
+		JCheckBox box2 = new JCheckBox("ÊıÑ§");
+		JCheckBox box3= new JCheckBox("ÓïÎÄ");
+		// µ¥Ñ¡
+		ButtonGroup buttonGroup = new ButtonGroup();// °´Å¥×é¶ÔÏó¡£ ¶àÑ¡Ò»±ØĞëÉèÖÃ
+		JRadioButton radioButton1 = new JRadioButton("ÄĞ");
+		JRadioButton radioButton2 = new JRadioButton("Å®");
 		buttonGroup.add(radioButton1);
 		buttonGroup.add(radioButton2);
-		// æ–‡æœ¬æ¡†
+		// ÎÄ±¾¿ò
 		JTextField jTextField = new JTextField( "",20);
 		jTextField.setEnabled(true);
 		jTextField.setEditable(true);
 
-		//å¯†ç æ¡† è¾“å…¥å€¼éƒ½æ˜¯**
+		//ÃÜÂë¿ò ÊäÈëÖµ¶¼ÊÇ**
 		JPasswordField passwd = new JPasswordField( "",20);
 		passwd.setEnabled(true);
 		passwd.setEditable(true);
 //		jTextField.setText("123");
-		// æŒ‰é’®
-		JButton button = new JButton("ç™»å½•");
-		JButton button2 = new JButton("æ³¨å†Œ");
+		// °´Å¥
+		JButton button = new JButton("µÇÂ¼");
+		JButton button2 = new JButton("×¢²á");
 		button.addActionListener(new ActionListener() {
 
 			@Override
@@ -53,43 +50,32 @@ public class JFrameTutorial extends JFrame {
 				String text = jTextField.getText();
 				String pwd = passwd.getText();
 				if(text.equals("")||pwd.equals("")){
-					System.out.println("ç”¨æˆ·åæˆ–è€…å¯†ç ä¸èƒ½ä¸ºç©º");
+					System.out.println("ÓÃ»§Ãû»òÕßÃÜÂë²»ÄÜÎª¿Õ");
 					return;
 				}
 
 				if(text.equals(RegistationFrame.ACCOUNT[0]) && pwd.equals(RegistationFrame.ACCOUNT[1])){
-					System.out.printf("ç™»å½•æˆåŠŸï¼šç”¨æˆ·åä¸º %s, å¯†ç ä¸º %s\n",text,pwd);
-					JOptionPane.showMessageDialog(JFrameTutorial.this,"ç™»å½•æˆåŠŸ!","æˆåŠŸ",JOptionPane.INFORMATION_MESSAGE);
-					jFrameTutorial.setVisible(false);
-					jFrameTutorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					StudentDAO model = StudentDAO.getInstance();
-					StudentView view = new StudentView();
-
-					// åˆ›å»ºæ§åˆ¶å™¨
-					new StudentController(view, model);
-
-					// æ˜¾ç¤ºè§†å›¾
-					view.setVisible(true);
-
+					System.out.printf("µÇÂ¼³É¹¦£ºÓÃ»§ÃûÎª %s, ÃÜÂëÎª %s\n",text,pwd);
+					JOptionPane.showMessageDialog(JFrameTutorial.this,"µÇÂ¼³É¹¦!","³É¹¦",JOptionPane.INFORMATION_MESSAGE);
 				}else{
-					System.out.printf("ç™»å½•å¤±è´¥: ä½ çš„ç”¨æˆ·åä¸º %s, å¯†ç ä¸º %s\n",text,pwd);
-					JOptionPane.showMessageDialog(JFrameTutorial.this,"ç™»å½•å¤±è´¥!","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+					System.out.printf("µÇÂ¼Ê§°Ü: ÄãµÄÓÃ»§ÃûÎª %s, ÃÜÂëÎª %s\n",text,pwd);
+					JOptionPane.showMessageDialog(JFrameTutorial.this,"µÇÂ¼Ê§°Ü!","´íÎó",JOptionPane.ERROR_MESSAGE);
 				}
 
 			}
 		});
 
 		button2.addActionListener(new RegisterListener());
-		// æ ‡ç­¾
-		JLabel label = new JLabel("ç”¨æˆ·å");
-		Font f1= new Font("å¾®è½¯é›…é»‘",Font.BOLD,20);
+		// ±êÇ©
+		JLabel label = new JLabel("ÓÃ»§Ãû");
+		Font f1= new Font("Î¢ÈíÑÅºÚ",Font.BOLD,20);
 		label.setFont(f1);
 
-		JLabel label2 = new JLabel("å¯†ç ");
+		JLabel label2 = new JLabel("ÃÜÂë");
 		label2.setFont(f1);
-		// æ–‡æœ¬åŸŸ
+		// ÎÄ±¾Óò
 		JTextArea textArea = new JTextArea(5, 20);
-		textArea.setText("è¿™æ˜¯ä¸€ä¸ªç¤ºä¾‹æ–‡æœ¬åŒºï¼Œæ‚¨å¯ä»¥åœ¨è¿™é‡Œè¾“å…¥å¤šè¡Œæ–‡æœ¬ã€‚");
+		textArea.setText("ÕâÊÇÒ»¸öÊ¾ÀıÎÄ±¾Çø£¬Äú¿ÉÒÔÔÚÕâÀïÊäÈë¶àĞĞÎÄ±¾¡£");
 
 		this.add(comboBoxes);
 		this.add(radioButton1);
@@ -106,10 +92,10 @@ public class JFrameTutorial extends JFrame {
 		this.add(textArea);
 //		this.add(new JScrollPane(textArea));
 	}
-	// æ„é€ æ–¹æ³•ï¼šå¯¹çª—å£è¿›è¡Œè®¾ç½®
-    public JFrameTutorial(){
+	// ¹¹Ôì·½·¨£º¶Ô´°¿Ú½øĞĞÉèÖÃ
+	JFrameTutorial(){
 		this.init();
-//		JFrame win1 = new JFrame("å¸¸ç”¨ç»„ä»¶");
+//		JFrame win1 = new JFrame("³£ÓÃ×é¼ş");
 		this.setBounds(60,100,188,108);
 		this.setSize(320,240);
 		this.setVisible(true);
@@ -118,7 +104,7 @@ public class JFrameTutorial extends JFrame {
 	}
 	public static void main(String[] args) {
 		jFrameTutorial = new JFrameTutorial();
-		jFrameTutorial.setTitle("å¸¸ç”¨ç»„ä»¶");
+		jFrameTutorial.setTitle("³£ÓÃ×é¼ş");
 		jFrameTutorial.setResizable(true);
 	}
 
