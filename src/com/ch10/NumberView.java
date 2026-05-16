@@ -2,6 +2,18 @@ package com.ch10;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+class Example9_8 {
+    public static void main(String[] args) {
+        NumberView view = new NumberView();
+        view.setBounds(100,100,600,360);
+        view.setTitle("¼òµ¥¼ÆËãÆ÷");
+    }
+}
 
 public class NumberView extends JFrame {
     public JTextField inputNumberOne,inputNumberTwo;
@@ -17,14 +29,14 @@ public class NumberView extends JFrame {
     }
     void init(){
         setLayout(new FlowLayout());
-        Font font = new Font("å®‹ä½“", Font.BOLD, 22);
+        Font font = new Font("ËÎÌå", Font.BOLD, 22);
         inputNumberOne = new JTextField(5);
         inputNumberTwo = new JTextField(5);
         inputNumberOne.setFont(font);
         inputNumberTwo.setFont(font);
         choiceFudao = new JComboBox<String>();
         choiceFudao.setFont(font);
-        button = new JButton("è®¡ç®—");
+        button = new JButton("¼ÆËã");
         button.setFont(font);
         String[] opera={"+","-","*","/"};
         for (String s:opera){
@@ -49,4 +61,58 @@ public class NumberView extends JFrame {
 
     }
 
+}
+
+
+class ComputerListener implements ActionListener {
+    NumberView numberView;
+    String fuhao;
+    public void setFuhao(String s){
+        fuhao=s;
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        try {
+            double num1 = Double.parseDouble(numberView.inputNumberOne.getText());
+            double num2 = Double.parseDouble(numberView.inputNumberOne.getText());
+            double result=0;
+            boolean isShow=true;
+            switch (fuhao){
+                case "+": result=num1+num2;break;
+                case "-": result=num1-num2;break;
+                case "*": result=num1*num2;break;
+                case "/": result=num1/num2;break;
+                default:isShow=false;break;
+            }
+            if (isShow){
+                numberView.textShow.append(num1+" "+fuhao+" "+num2+" = "+result+'\n');
+            }
+        }catch (Exception ex){
+            numberView.textShow.append("\nÇëÊäÈëÊý×Ö×Ö·û\n");
+        }
+
+
+    }
+    public void setView(NumberView numberView) {
+        this.numberView=numberView;
+    }
+}
+
+class OperatorListener implements ItemListener, ActionListener {
+    NumberView numberView;
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String fuhao = numberView.choiceFudao.getSelectedItem().toString();
+        numberView.computer.setFuhao(fuhao);
+    }
+
+    @Override
+    public void itemStateChanged(ItemEvent e) {
+        String fuhao = numberView.choiceFudao.getSelectedItem().toString();
+        numberView.computer.setFuhao(fuhao);
+    }
+
+    public void setView(NumberView numberView) {
+        this.numberView=numberView;
+    }
 }

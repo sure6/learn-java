@@ -16,41 +16,41 @@ public class RegistationFrame extends JFrame {
 
     public RegistationFrame() {
         registationFrame=this;
-        // è®¾ç½®çª—å£æ ‡é¢˜
-        setTitle("ç”¨æˆ·æ³¨å†Œ");
-        // è®¾ç½®çª—å£å¤§å°
+        // ÉèÖÃ´°¿Ú±êÌâ
+        setTitle("ÓÃ»§×¢²á");
+        // ÉèÖÃ´°¿Ú´óĞ¡
         setSize(400, 300);
-        // è®¾ç½®çª—å£å…³é—­æ“ä½œ
+        // ÉèÖÃ´°¿Ú¹Ø±Õ²Ù×÷
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        // å±…ä¸­æ˜¾ç¤º
+        // ¾ÓÖĞÏÔÊ¾
         setLocationRelativeTo(null);
 
-        // åˆ›å»ºä¸»é¢æ¿ é‡‡ç”¨ç½‘æ ¼è¢‹å¸ƒå±€
+        // ´´½¨Ö÷Ãæ°å ²ÉÓÃÍø¸ñ´ü²¼¾Ö
         JPanel mainPanel = new JPanel(new GridBagLayout());
-        // åˆ›å»º GridBagConstraints å¯¹è±¡ï¼Œç”¨äºæŒ‡å®šæ¯ä¸ªç»„ä»¶åœ¨ GridBagLayout ä¸­çš„å¸ƒå±€çº¦æŸ
+        // ´´½¨ GridBagConstraints ¶ÔÏó£¬ÓÃÓÚÖ¸¶¨Ã¿¸ö×é¼şÔÚ GridBagLayout ÖĞµÄ²¼¾ÖÔ¼Êø
         GridBagConstraints gbc = new GridBagConstraints();
-        //è®¾ç½®ç»„ä»¶å‘¨å›´çš„è¾¹è·ï¼ˆinsetsï¼‰
-        //å‚æ•°é¡ºåºï¼šä¸Šã€å·¦ã€ä¸‹ã€å³ï¼ˆå•ä½ï¼šåƒç´ ï¼‰
-        //è¿™é‡Œè®¾ç½®ä¸ºå„è¾¹éƒ½æœ‰5åƒç´ çš„é—´è·ï¼Œä½¿ç»„ä»¶ä¹‹é—´ä¸ä¼šç´§è´´åœ¨ä¸€èµ·
+        //ÉèÖÃ×é¼şÖÜÎ§µÄ±ß¾à£¨insets£©
+        //²ÎÊıË³Ğò£ºÉÏ¡¢×ó¡¢ÏÂ¡¢ÓÒ£¨µ¥Î»£ºÏñËØ£©
+        //ÕâÀïÉèÖÃÎª¸÷±ß¶¼ÓĞ5ÏñËØµÄ¼ä¾à£¬Ê¹×é¼şÖ®¼ä²»»á½ôÌùÔÚÒ»Æğ
         gbc.insets = new Insets(5, 5, 5, 5);
-        //è®¾ç½®å½“ç»„ä»¶å°äºå…¶æ˜¾ç¤ºåŒºåŸŸæ—¶å¦‚ä½•å¡«å……ç©º
-        //HORIZONTAL è¡¨ç¤ºæ°´å¹³æ–¹å‘å¡«å……
-        //å…¶ä»–å¯é€‰å€¼ï¼š
-        //VERTICALï¼šå‚ç›´æ–¹å‘å¡«å……
-        //BOTHï¼šæ°´å¹³å’Œå‚ç›´éƒ½å¡«å……
-        //NONEï¼šä¸å¡«å……ï¼ˆé»˜è®¤ï¼‰
+        //ÉèÖÃµ±×é¼şĞ¡ÓÚÆäÏÔÊ¾ÇøÓòÊ±ÈçºÎÌî³ä¿Õ
+        //HORIZONTAL ±íÊ¾Ë®Æ½·½ÏòÌî³ä
+        //ÆäËû¿ÉÑ¡Öµ£º
+        //VERTICAL£º´¹Ö±·½ÏòÌî³ä
+        //BOTH£ºË®Æ½ºÍ´¹Ö±¶¼Ìî³ä
+        //NONE£º²»Ìî³ä£¨Ä¬ÈÏ£©
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        // æ ‡é¢˜æ ‡ç­¾
-        JLabel titleLabel = new JLabel("ç”¨æˆ·æ³¨å†Œ", JLabel.CENTER);
-        titleLabel.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 18));
+        // ±êÌâ±êÇ©
+        JLabel titleLabel = new JLabel("ÓÃ»§×¢²á", JLabel.CENTER);
+        titleLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 18));
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
         mainPanel.add(titleLabel, gbc);
 
-        // ç”¨æˆ·åæ ‡ç­¾å’Œæ–‡æœ¬æ¡†
-        JLabel usernameLabel = new JLabel("ç”¨æˆ·å:");
+        // ÓÃ»§Ãû±êÇ©ºÍÎÄ±¾¿ò
+        JLabel usernameLabel = new JLabel("ÓÃ»§Ãû:");
         gbc.gridx = 0;
         gbc.gridy = 1;
         gbc.gridwidth = 1;
@@ -61,8 +61,8 @@ public class RegistationFrame extends JFrame {
         gbc.gridy = 1;
         mainPanel.add(usernameField, gbc);
 
-        // å¯†ç æ ‡ç­¾å’Œå¯†ç æ¡†
-        JLabel passwordLabel = new JLabel("å¯†ç :");
+        // ÃÜÂë±êÇ©ºÍÃÜÂë¿ò
+        JLabel passwordLabel = new JLabel("ÃÜÂë:");
         gbc.gridx = 0;
         gbc.gridy = 2;
         mainPanel.add(passwordLabel, gbc);
@@ -72,8 +72,8 @@ public class RegistationFrame extends JFrame {
         gbc.gridy = 2;
         mainPanel.add(passwordField, gbc);
 
-        // ç¡®è®¤å¯†ç æ ‡ç­¾å’Œå¯†ç æ¡†
-        JLabel confirmPasswordLabel = new JLabel("ç¡®è®¤å¯†ç :");
+        // È·ÈÏÃÜÂë±êÇ©ºÍÃÜÂë¿ò
+        JLabel confirmPasswordLabel = new JLabel("È·ÈÏÃÜÂë:");
         gbc.gridx = 0;
         gbc.gridy = 3;
         mainPanel.add(confirmPasswordLabel, gbc);
@@ -83,8 +83,8 @@ public class RegistationFrame extends JFrame {
         gbc.gridy = 3;
         mainPanel.add(confirmPasswordField, gbc);
 
-        // é‚®ç®±æ ‡ç­¾å’Œæ–‡æœ¬æ¡†
-        JLabel emailLabel = new JLabel("ç”µå­é‚®ç®±:");
+        // ÓÊÏä±êÇ©ºÍÎÄ±¾¿ò
+        JLabel emailLabel = new JLabel("µç×ÓÓÊÏä:");
         gbc.gridx = 0;
         gbc.gridy = 4;
         mainPanel.add(emailLabel, gbc);
@@ -94,8 +94,8 @@ public class RegistationFrame extends JFrame {
         gbc.gridy = 4;
         mainPanel.add(emailField, gbc);
 
-        // æ³¨å†ŒæŒ‰é’®
-        JButton registerButton = new JButton("æ³¨å†Œ");
+        // ×¢²á°´Å¥
+        JButton registerButton = new JButton("×¢²á");
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 2;
@@ -103,10 +103,10 @@ public class RegistationFrame extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         mainPanel.add(registerButton, gbc);
 
-        // æ·»åŠ ä¸»é¢æ¿åˆ°çª—å£
+        // Ìí¼ÓÖ÷Ãæ°åµ½´°¿Ú
         add(mainPanel);
 
-        // æ³¨å†ŒæŒ‰é’®äº‹ä»¶å¤„ç†
+        // ×¢²á°´Å¥ÊÂ¼ş´¦Àí
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,24 +115,24 @@ public class RegistationFrame extends JFrame {
                 String confirmPassword = new String(confirmPasswordField.getPassword());
                 String email = emailField.getText();
 
-                // ç®€å•çš„éªŒè¯
+                // ¼òµ¥µÄÑéÖ¤
                 if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || email.isEmpty()) {
                     JOptionPane.showMessageDialog(RegistationFrame.this,
-                            "æ‰€æœ‰å­—æ®µéƒ½å¿…é¡»å¡«å†™!", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                            "ËùÓĞ×Ö¶Î¶¼±ØĞëÌîĞ´!", "´íÎó", JOptionPane.ERROR_MESSAGE);
                 } else if (!password.equals(confirmPassword)) {
                     JOptionPane.showMessageDialog(RegistationFrame.this,
-                            "ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´!", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                            "Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ!", "´íÎó", JOptionPane.ERROR_MESSAGE);
                 } else if (!email.contains("@")) {
                     JOptionPane.showMessageDialog(RegistationFrame.this,
-                            "è¯·è¾“å…¥æœ‰æ•ˆçš„ç”µå­é‚®ç®±åœ°å€!", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                            "ÇëÊäÈëÓĞĞ§µÄµç×ÓÓÊÏäµØÖ·!", "´íÎó", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    // è¿™é‡Œå¯ä»¥æ·»åŠ å®é™…çš„æ³¨å†Œé€»è¾‘
+                    // ÕâÀï¿ÉÒÔÌí¼ÓÊµ¼ÊµÄ×¢²áÂß¼­
                     JOptionPane.showMessageDialog(RegistationFrame.this,
-                            "æ³¨å†ŒæˆåŠŸ!", "æˆåŠŸ", JOptionPane.INFORMATION_MESSAGE);
+                            "×¢²á³É¹¦!", "³É¹¦", JOptionPane.INFORMATION_MESSAGE);
 
                     ACCOUNT[0]=username;
                     ACCOUNT[1]=password;
-                    // æ¸…ç©ºè¡¨å•
+                    // Çå¿Õ±íµ¥
                     usernameField.setText("");
                     passwordField.setText("");
                     confirmPasswordField.setText("");

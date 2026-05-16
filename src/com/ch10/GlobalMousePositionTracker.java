@@ -11,7 +11,7 @@ public class GlobalMousePositionTracker extends JFrame {
     private Timer timer;
 
     public GlobalMousePositionTracker() {
-        setTitle("å…¨å±€é¼ æ ‡ä½ç½®è¿½è¸ªå™¨");
+        setTitle("È«¾ÖÊó±êÎ»ÖÃ×·×ÙÆ÷");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -19,17 +19,17 @@ public class GlobalMousePositionTracker extends JFrame {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        positionLabel = new JLabel("å±å¹•ä½ç½®: (0, 0)", JLabel.CENTER);
-        positionLabel.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 18));
+        positionLabel = new JLabel("ÆÁÄ»Î»ÖÃ: (0, 0)", JLabel.CENTER);
+        positionLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 18));
         panel.add(positionLabel, BorderLayout.CENTER);
         add(panel);
 
-        // ä½¿ç”¨Timerå®šæœŸæ£€æŸ¥é¼ æ ‡ä½ç½®
+        // Ê¹ÓÃTimer¶¨ÆÚ¼ì²éÊó±êÎ»ÖÃ
         timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Point mousePoint = MouseInfo.getPointerInfo().getLocation();
-                positionLabel.setText(String.format("å±å¹•ä½ç½®: (%d, %d)",
+                positionLabel.setText(String.format("ÆÁÄ»Î»ÖÃ: (%d, %d)",
                         mousePoint.x, mousePoint.y));
             }
         });

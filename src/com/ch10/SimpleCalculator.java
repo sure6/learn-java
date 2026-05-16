@@ -13,23 +13,23 @@ public class SimpleCalculator extends JFrame implements ActionListener {
     private boolean startNewInput = true;
 
     public SimpleCalculator() {
-        // è®¾ç½®çª—å£
-        setTitle("ç®€å•è®¡ç®—å™¨");
+        // ÉèÖÃ´°¿Ú
+        setTitle("¼òµ¥¼ÆËãÆ÷");
         setSize(300, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // åˆ›å»ºæ˜¾ç¤ºåŒºåŸŸ
+        // ´´½¨ÏÔÊ¾ÇøÓò
         display = new JTextField();
         display.setEditable(false);
         display.setHorizontalAlignment(JTextField.RIGHT);
         display.setFont(new Font("Arial", Font.PLAIN, 24));
 
-        // åˆ›å»ºæŒ‰é’®é¢æ¿
+        // ´´½¨°´Å¥Ãæ°å
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(5, 4, 5, 5));
 
-        // æŒ‰é’®æ–‡æœ¬
+        // °´Å¥ÎÄ±¾
         String[] buttons = {
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
@@ -38,7 +38,7 @@ public class SimpleCalculator extends JFrame implements ActionListener {
                 "C", "CE"
         };
 
-        // åˆ›å»ºæŒ‰é’®å¹¶æ·»åŠ åˆ°é¢æ¿
+        // ´´½¨°´Å¥²¢Ìí¼Óµ½Ãæ°å
         for (String text : buttons) {
             JButton button = new JButton(text);
             button.addActionListener(this);
@@ -46,12 +46,12 @@ public class SimpleCalculator extends JFrame implements ActionListener {
             buttonPanel.add(button);
         }
 
-        // è®¾ç½®å¸ƒå±€
+        // ÉèÖÃ²¼¾Ö
         setLayout(new BorderLayout(5, 5));
         add(display, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
 
-        // æ·»åŠ è¾¹è·
+        // Ìí¼Ó±ß¾à
         ((JComponent) getContentPane()).setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     }
 
@@ -60,7 +60,7 @@ public class SimpleCalculator extends JFrame implements ActionListener {
         String command = e.getActionCommand();
 
         if (command.matches("[0-9]")) {
-            // æ•°å­—æŒ‰é’®
+            // Êı×Ö°´Å¥
             if (startNewInput) {
                 currentInput = "";
                 startNewInput = false;
@@ -68,7 +68,7 @@ public class SimpleCalculator extends JFrame implements ActionListener {
             currentInput += command;
             display.setText(currentInput);
         } else if (command.equals(".")) {
-            // å°æ•°ç‚¹
+            // Ğ¡Êıµã
             if (startNewInput) {
                 currentInput = "0";
                 startNewInput = false;
@@ -78,14 +78,14 @@ public class SimpleCalculator extends JFrame implements ActionListener {
                 display.setText(currentInput);
             }
         } else if (command.matches("[+\\-*/]")) {
-            // è¿ç®—ç¬¦
+            // ÔËËã·û
             if (!currentInput.isEmpty()) {
                 firstNumber = Double.parseDouble(currentInput);
                 operation = command;
                 startNewInput = true;
             }
         } else if (command.equals("=")) {
-            // ç­‰å·
+            // µÈºÅ
             if (!operation.isEmpty() && !currentInput.isEmpty()) {
                 double secondNumber = Double.parseDouble(currentInput);
                 double result = calculate(firstNumber, secondNumber, operation);
@@ -95,12 +95,12 @@ public class SimpleCalculator extends JFrame implements ActionListener {
                 startNewInput = true;
             }
         } else if (command.equals("C")) {
-            // æ¸…é™¤å½“å‰è¾“å…¥
+            // Çå³ıµ±Ç°ÊäÈë
             currentInput = "";
             display.setText("0");
             startNewInput = true;
         } else if (command.equals("CE")) {
-            // å…¨éƒ¨æ¸…é™¤
+            // È«²¿Çå³ı
             currentInput = "";
             firstNumber = 0;
             operation = "";
@@ -119,7 +119,7 @@ public class SimpleCalculator extends JFrame implements ActionListener {
                 return num1 * num2;
             case "/":
                 if (num2 == 0) {
-                    JOptionPane.showMessageDialog(this, "ä¸èƒ½é™¤ä»¥é›¶", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "²»ÄÜ³ıÒÔÁã", "´íÎó", JOptionPane.ERROR_MESSAGE);
                     return 0;
                 }
                 return num1 / num2;

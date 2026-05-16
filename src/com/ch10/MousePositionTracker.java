@@ -10,24 +10,24 @@ public class MousePositionTracker extends JFrame {
     private JLabel positionLabel;
 
     public MousePositionTracker() {
-        setTitle("é¼ æ ‡ä½ç½®è¿½è¸ªå™¨");
+        setTitle("Êó±êÎ»ÖÃ×·×ÙÆ÷");
         setSize(300, 150);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null); // å±…ä¸­æ˜¾ç¤º
+        setLocationRelativeTo(null); // ¾ÓÖĞÏÔÊ¾
 
-        // åˆ›å»ºä¸»é¢æ¿
+        // ´´½¨Ö÷Ãæ°å
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // åˆ›å»ºæ˜¾ç¤ºä½ç½®çš„æ ‡ç­¾
-        positionLabel = new JLabel("é¼ æ ‡ä½ç½®: (0, 0)", JLabel.CENTER);
-        positionLabel.setFont(new Font("å¾®è½¯é›…é»‘", Font.BOLD, 18));
+        // ´´½¨ÏÔÊ¾Î»ÖÃµÄ±êÇ©
+        positionLabel = new JLabel("Êó±êÎ»ÖÃ: (0, 0)", JLabel.CENTER);
+        positionLabel.setFont(new Font("Î¢ÈíÑÅºÚ", Font.BOLD, 18));
 
-        // æ·»åŠ ç»„ä»¶
+        // Ìí¼Ó×é¼ş
         panel.add(positionLabel, BorderLayout.CENTER);
         add(panel);
 
-        // æ·»åŠ é¼ æ ‡ç§»åŠ¨ç›‘å¬å™¨
+        // Ìí¼ÓÊó±êÒÆ¶¯¼àÌıÆ÷
         addMouseMotionListener(new MouseMotionAdapter() {
             @Override
             public void mouseMoved(MouseEvent e) {
@@ -42,13 +42,13 @@ public class MousePositionTracker extends JFrame {
     }
 
     private void updatePositionLabel(int x, int y) {
-        positionLabel.setText(String.format("é¼ æ ‡ä½ç½®: (%d, %d)", x, y));
+        positionLabel.setText(String.format("Êó±êÎ»ÖÃ: (%d, %d)", x, y));
 
-        // è·å–å±å¹•åæ ‡ï¼ˆç›¸å¯¹äºæ•´ä¸ªå±å¹•ï¼‰
+        // »ñÈ¡ÆÁÄ»×ø±ê£¨Ïà¶ÔÓÚÕû¸öÆÁÄ»£©
         Point screenPoint = getLocationOnScreen();
         int screenX = screenPoint.x + x;
         int screenY = screenPoint.y + y;
-        System.out.printf("çª—å£åæ ‡: (%d, %d) | å±å¹•åæ ‡: (%d, %d)%n", x, y, screenX, screenY);
+        System.out.printf("´°¿Ú×ø±ê: (%d, %d) | ÆÁÄ»×ø±ê: (%d, %d)%n", x, y, screenX, screenY);
     }
 
     public static void main(String[] args) {
