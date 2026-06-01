@@ -19,7 +19,6 @@ public class JFrameDemo {
 		win1.setBounds(800,540,388,308);
 		win2.setBounds(260,100,188,108);
 
-
 		win2.setSize(450,240);
 		win1.setVisible(true);// 默认窗口不显示，默认是false
 			//EXIT_ON_CLOSE关闭窗口程序结束  DISPOSE_ON_CLOSE关闭窗口只是释放程序资源

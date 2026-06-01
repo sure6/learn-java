@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class AutoLoginSystem {
-    // 用户数据存储文件
+    // 用户数据存储文件 本地没有
     private static final String USER_DATA_FILE = "userdata.txt";
 
     public static void main(String[] args) {
@@ -68,6 +68,7 @@ public class AutoLoginSystem {
         } catch (IOException e) {
             System.out.println("注册失败: " + e.getMessage());
         }finally {
+            // 关闭顺序 先关闭print buffered file
             if (pw!=null){
                 pw.close();
             }
@@ -111,7 +112,7 @@ public class AutoLoginSystem {
                 String[] parts = line.split(":");
                 if (parts.length == 2 && parts[0].equals(username) && parts[1].equals(password)) {
                     loginSuccess = true;
-                    break;
+                    break; // 跳出循环
                 }
 
                 // 在login方法中验证加密后的密码
@@ -157,7 +158,7 @@ public class AutoLoginSystem {
     }
 
     // 简单的MD5加密方法
-    private static String encryptPassword(String password) {
+    public static String encryptPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] array = md.digest(password.getBytes());

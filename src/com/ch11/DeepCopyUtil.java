@@ -2,7 +2,7 @@ package com.ch11;
 
 import java.io.*;
 
-// 对象深拷贝
+// 对象深拷贝 浅拷贝 深拷贝拷贝对象及里面属性值， 浅拷贝只拷贝对象内地址
 public class DeepCopyUtil {
     @SuppressWarnings("unchecked")
     public static <T extends Serializable> T deepCopy(T obj) {

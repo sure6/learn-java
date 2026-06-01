@@ -40,10 +40,12 @@ public class StringMethods {
         System.out.println(Integer.toHexString(a));// 16进制
 
 //     F:\第11周\com\ch08
-        String s7="F:\\第11周\\com\\ch08";
+        String s7="F:\\第11周\\com\\ch08\\";
         String s6 = s7.replaceAll("\\\\", "#");
         System.out.println(s6);
-        String[] s = s7.split("\\\\");
+        String s77="Java,编程,";
+        String[] s = s77.split(",");
+     System.out.println(s.length);
         for (String str:s){
             System.out.println(str);
         }

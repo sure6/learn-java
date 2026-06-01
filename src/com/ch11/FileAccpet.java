@@ -12,6 +12,6 @@ public class FileAccpet implements FilenameFilter {
     }
     @Override
     public boolean accept(File dir, String name) {
-        return name.endsWith(extendName);
+        return name.endsWith(extendName);//以什么后缀名文件来过滤
     }
 }

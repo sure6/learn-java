@@ -6,6 +6,7 @@ import java.io.Serializable;
 public class Student implements Serializable {
     private String name;
     private int age;
+    // transient 只能用在属性上 隐藏该字段序列化
     private transient String password;
 
     public Student(String name, int age) {
