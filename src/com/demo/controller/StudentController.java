@@ -25,12 +25,25 @@ public class StudentController {
         view.addEditButtonListener(new EditButtonListener());
         view.addDeleteButtonListener(new DeleteButtonListener());
         view.addRefreshButtonListener(new RefreshButtonListener());
+        view.addSearchButtonListener(new SearchButtonListener());
     }
 
     // 刷新表格数据
     private void refreshStudentTable() {
         List<Student> students = model.getAllStudents();
         view.setTableData(students);
+    }
+
+    class SearchButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String searchText = view.getSearchText();
+            List<Student> students = model.getAllStudents();
+            if (searchText != null && !searchText.isEmpty()) {
+                students = model.searchStudents(searchText);
+            }
+            view.setTableData(students);
+        }
     }
 
     // 添加按钮事件处理

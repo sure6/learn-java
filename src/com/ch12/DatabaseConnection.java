@@ -9,7 +9,7 @@ public class DatabaseConnection {
     private static Connection connection;
 
     // 数据库连接信息
-    private static final String url = "jdbc:mysql://172.21.17.111:3306/recsys?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
+    private static final String url = "jdbc:mysql://192.168.1.105:3306/recsys?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
     private static final String username = "root";
     private static final String password = "123456";
 

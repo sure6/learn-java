@@ -70,10 +70,30 @@ public class StudentDAO {
 
     // 删
     public boolean deleteStudent(String id) {
-        for (Student s : students) {
-            if (s.getId().equals(id)) {
-                students.remove(s);
+//        for (Student s : students) {
+//            if (s.getId().equals(id)) {
+//                students.remove(s);
+//                return true;
+//            }
+//        }
+        Connection con = null;
+        try{
+            con = DatabaseConnection.getInstance();
+            PreparedStatement prepareStatement = con.prepareStatement("delete from students where id = ?");
+            prepareStatement.setString(1, id);
+            int ok = prepareStatement.executeUpdate();
+            if (ok > 0) {
+                System.out.println("删除成功");
+                students.removeIf(s -> s.getId().equals(id));
                 return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
         return false;
@@ -81,10 +101,34 @@ public class StudentDAO {
 
     // 改
     public boolean updateStudent(Student student) {
-        for (int i = 0; i < students.size(); i++) {
-            if (students.get(i).getId().equals(student.getId())) {
-                students.set(i, student);
+//
+        Connection con = null;
+        try{
+            con = DatabaseConnection.getInstance();
+            PreparedStatement prepareStatement = con.prepareStatement("update students set name = ?, age = ?, gender = ?, major = ? where id = ?");
+            prepareStatement.setString(1, student.getName());
+            prepareStatement.setInt(2, student.getAge());
+            prepareStatement.setString(3, student.getGender());
+            prepareStatement.setString(4, student.getMajor());
+            prepareStatement.setString(5, student.getId());
+            int ok = prepareStatement.executeUpdate();
+            if (ok > 0) {
+                System.out.println("修改成功");
+                for (int i = 0; i < students.size(); i++) {
+                    if (students.get(i).getId().equals(student.getId())) {
+                        students.set(i, student);
+                        break;
+                    }
+                }
                 return true;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }finally {
+            try {
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         }
         return false;
@@ -101,8 +145,9 @@ public class StudentDAO {
 //                return s;
 //            }
 //        }
+        Connection connection=null;
         try {
-            Connection connection = DatabaseConnection.getInstance();
+            connection = DatabaseConnection.getInstance();
             PreparedStatement prepareStatement = connection.prepareStatement("select * from students where id = ?");
             prepareStatement.setString(1, id);
             ResultSet resultSet = prepareStatement.executeQuery();
@@ -114,10 +159,25 @@ public class StudentDAO {
                 String major = resultSet.getString("major");
                 return  new Student(id1, name, age, gender, major);
             }
-            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return null;
+    }
+
+    public List<Student> searchStudents(String searchText) {
+        List<Student> searchResults = new ArrayList<>();
+        for (Student student : students) {
+            if (student.getName().contains(searchText) || student.getId().contains(searchText)) {
+                searchResults.add(student);
+            }
+        }
+        return searchResults;
     }
 }

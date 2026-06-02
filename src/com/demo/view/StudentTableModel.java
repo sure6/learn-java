@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudentTableModel extends AbstractTableModel {
     private List<Student> students;
-    private final String[] columnNames = {"瀛﹀彿", "濮撳悕", "骞撮緞", "鎬у埆", "涓撲笟"};
+    private final String[] columnNames = {"学号", "姓名", "年龄", "性别", "专业"};
 
     public StudentTableModel(List<Student> students) {
         this.students = students;
@@ -43,7 +43,7 @@ public class StudentTableModel extends AbstractTableModel {
 
     public void setStudents(List<Student> students) {
         this.students = students;
-        // 褰撹〃鏍间腑鍊煎彂鐢熸敼鍙橈紝閲嶆柊娓叉煋琛ㄦ牸
+        // 当表格中值发生改变，重新渲染表格
         fireTableDataChanged();
     }
 }

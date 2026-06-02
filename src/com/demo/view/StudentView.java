@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentView extends JFrame {
     private JTable studentTable;
     private StudentTableModel tableModel;
-    private JButton addButton, editButton, deleteButton, refreshButton;
+    private JButton addButton, editButton, deleteButton, refreshButton, searchButton;
     private JTextField searchField;
 
     public StudentView() {
@@ -19,56 +19,56 @@ public class StudentView extends JFrame {
     }
 
     private void initializeUI() {
-        // å®šä¹‰çª—å£
-        setTitle("å­¦ç”Ÿä¿¡æ¯ç®¡ç†ç³»ç»Ÿ");
+        // ¶¨Òå´°¿Ú
+        setTitle("Ñ§ÉúĞÅÏ¢¹ÜÀíÏµÍ³");
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // ä¸»é¢æ¿ï¼Œ è¾¹ç•Œå¸ƒå±€
+        // Ö÷Ãæ°å£¬ ±ß½ç²¼¾Ö
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // è¡¨æ ¼é¢æ¿
+        // ±í¸ñÃæ°å
         JPanel tablePanel = new JPanel(new BorderLayout());
         tableModel = new StudentTableModel(null);
         studentTable = new JTable(tableModel);
         tablePanel.add(new JScrollPane(studentTable), BorderLayout.CENTER);
 
-        // æŒ‰é’®é¢æ¿
+        // °´Å¥Ãæ°å
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        addButton = new JButton("æ·»åŠ ");
-        editButton = new JButton("ç¼–è¾‘");
-        deleteButton = new JButton("åˆ é™¤");
-        refreshButton = new JButton("åˆ·æ–°");
+        addButton = new JButton("Ìí¼Ó");
+        editButton = new JButton("±à¼­");
+        deleteButton = new JButton("É¾³ı");
+        refreshButton = new JButton("Ë¢ĞÂ");
 
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(refreshButton);
 
-        // æœç´¢é¢æ¿
+        // ËÑË÷Ãæ°å
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         searchField = new JTextField(20);
-        JButton searchButton = new JButton("æœç´¢");
+        searchButton = new JButton("ËÑË÷");
 
-        searchPanel.add(new JLabel("å­¦å·:"));
+        searchPanel.add(new JLabel("Ñ§ºÅ:"));
         searchPanel.add(searchField);
         searchPanel.add(searchButton);
 
-        // æ·»åŠ ç»„ä»¶åˆ°ä¸»é¢æ¿
+        // Ìí¼Ó×é¼şµ½Ö÷Ãæ°å
         mainPanel.add(searchPanel, BorderLayout.NORTH);
         mainPanel.add(tablePanel, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.SOUTH);
-        // ä¸»é¢æ¿æ·»åŠ åˆ°çª—å£å»
+        // Ö÷Ãæ°åÌí¼Óµ½´°¿ÚÈ¥
         add(mainPanel);
     }
 
-    // è®¾ç½®è¡¨æ ¼æ•°æ®
+    // ÉèÖÃ±í¸ñÊı¾İ
     public void setTableData(List<Student> students) {
         tableModel.setStudents(students);
     }
 
-    // è·å–é€‰ä¸­çš„å­¦ç”ŸID
+    // »ñÈ¡Ñ¡ÖĞµÄÑ§ÉúID
     public String getSelectedStudentId() {
         int row = studentTable.getSelectedRow();
         if (row >= 0) {
@@ -77,32 +77,37 @@ public class StudentView extends JFrame {
         return null;
     }
 
-    // è·å–æœç´¢æ¡†å†…å®¹
+    // »ñÈ¡ËÑË÷¿òÄÚÈİ
     public String getSearchText() {
         return searchField.getText().trim();
     }
 
-    // æ·»åŠ æŒ‰é’®ç›‘å¬å™¨
+    // ËÑË÷°´Å¥¼àÌıÆ÷
+    public void addSearchButtonListener(ActionListener listener) {
+        searchButton.addActionListener(listener);
+    }
+
+    // Ìí¼Ó°´Å¥¼àÌıÆ÷
     public void addAddButtonListener(ActionListener listener) {
         addButton.addActionListener(listener);
     }
 
-    // æ·»åŠ ç¼–è¾‘æŒ‰é’®ç›‘å¬å™¨
+    // Ìí¼Ó±à¼­°´Å¥¼àÌıÆ÷
     public void addEditButtonListener(ActionListener listener) {
         editButton.addActionListener(listener);
     }
 
-    // æ·»åŠ åˆ é™¤æŒ‰é’®ç›‘å¬å™¨
+    // Ìí¼ÓÉ¾³ı°´Å¥¼àÌıÆ÷
     public void addDeleteButtonListener(ActionListener listener) {
         deleteButton.addActionListener(listener);
     }
 
-    // æ·»åŠ åˆ·æ–°æŒ‰é’®ç›‘å¬å™¨
+    // Ìí¼ÓË¢ĞÂ°´Å¥¼àÌıÆ÷
     public void addRefreshButtonListener(ActionListener listener) {
         refreshButton.addActionListener(listener);
     }
 
-    // æ˜¾ç¤ºæ·»åŠ /ç¼–è¾‘å¯¹è¯æ¡†
+    // ÏÔÊ¾Ìí¼Ó/±à¼­¶Ô»°¿ò
     public Student showStudentDialog(Student student) {
         JPanel panel = new JPanel(new GridLayout(5, 2, 5, 5));
 
@@ -118,24 +123,24 @@ public class StudentView extends JFrame {
             ageField.setText(String.valueOf(student.getAge()));
             genderField.setText(student.getGender());
             majorField.setText(student.getMajor());
-            idField.setEditable(false); // ç¼–è¾‘æ—¶ä¸å…è®¸ä¿®æ”¹ID
+            idField.setEditable(false); // ±à¼­Ê±²»ÔÊĞíĞŞ¸ÄID
         }
 
-        panel.add(new JLabel("å­¦å·:"));
+        panel.add(new JLabel("Ñ§ºÅ:"));
         panel.add(idField);
-        panel.add(new JLabel("å§“å:"));
+        panel.add(new JLabel("ĞÕÃû:"));
         panel.add(nameField);
-        panel.add(new JLabel("å¹´é¾„:"));
+        panel.add(new JLabel("ÄêÁä:"));
         panel.add(ageField);
-        panel.add(new JLabel("æ€§åˆ«:"));
+        panel.add(new JLabel("ĞÔ±ğ:"));
         panel.add(genderField);
-        panel.add(new JLabel("ä¸“ä¸š:"));
+        panel.add(new JLabel("×¨Òµ:"));
         panel.add(majorField);
 
         int result = JOptionPane.showConfirmDialog(
                 this,
                 panel,
-                student == null ? "æ·»åŠ å­¦ç”Ÿ" : "ç¼–è¾‘å­¦ç”Ÿ",
+                student == null ? "Ìí¼ÓÑ§Éú" : "±à¼­Ñ§Éú",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE
         );
@@ -149,26 +154,26 @@ public class StudentView extends JFrame {
                 String major = majorField.getText().trim();
 
                 if (id.isEmpty() || name.isEmpty() || gender.isEmpty() || major.isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "æ‰€æœ‰å­—æ®µéƒ½å¿…é¡»å¡«å†™", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, "ËùÓĞ×Ö¶Î¶¼±ØĞëÌîĞ´", "´íÎó", JOptionPane.ERROR_MESSAGE);
                     return null;
                 }
 
                 return new Student(id, name, age, gender, major);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "å¹´é¾„å¿…é¡»æ˜¯æ•°å­—", "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "ÄêÁä±ØĞëÊÇÊı×Ö", "´íÎó", JOptionPane.ERROR_MESSAGE);
                 return null;
             }
         }
         return null;
     }
 
-    // æ˜¾ç¤ºé”™è¯¯æ¶ˆæ¯
+    // ÏÔÊ¾´íÎóÏûÏ¢
     public void showError(String message) {
-        JOptionPane.showMessageDialog(this, message, "é”™è¯¯", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "´íÎó", JOptionPane.ERROR_MESSAGE);
     }
 
-    // æ˜¾ç¤ºæˆåŠŸæ¶ˆæ¯
+    // ÏÔÊ¾³É¹¦ÏûÏ¢
     public void showSuccess(String message) {
-        JOptionPane.showMessageDialog(this, message, "æˆåŠŸ", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "³É¹¦", JOptionPane.INFORMATION_MESSAGE);
     }
 }

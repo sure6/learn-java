@@ -16,66 +16,66 @@ import java.io.IOException;
 import static com.demo.EncryptUtil.encryptPassword;
 import static com.demo.RegistationFrame.USER_DATA_FILE;
 
-// step 1 è¿™ä¸ªç±»å…·æœ‰çª—å£å±æ€§ è‡ªå®šä¹‰ä¸€ä¸ªç±»ç»§æ‰¿JFrame
+// step 1 Õâ¸öÀà¾ßÓĞ´°¿ÚÊôĞÔ ×Ô¶¨ÒåÒ»¸öÀà¼Ì³ĞJFrame
 public class Loginutorial extends JFrame {
 
 	static Loginutorial jFrameTutorial;
 	private void init(){
-		//å®šä¹‰å¸ƒå±€
+		//¶¨Òå²¼¾Ö
 		this.setLayout(new FlowLayout());
 
-		// æ–‡æœ¬æ¡†
+		// ÎÄ±¾¿ò
 		JTextField jTextField = new JTextField( "",20);
 		jTextField.setEnabled(true);
 		jTextField.setEditable(true);
 
-		//å¯†ç æ¡† è¾“å…¥å€¼éƒ½æ˜¯**
+		//ÃÜÂë¿ò ÊäÈëÖµ¶¼ÊÇ**
 		JPasswordField passwd = new JPasswordField( "",20);
 		passwd.setEnabled(true);
 		passwd.setEditable(true);
 //		jTextField.setText("123");
-		// æŒ‰é’®
-		JButton button = new JButton("ç™»å½•");
-		JButton button2 = new JButton("æ³¨å†Œ");
-		// ç™»å½•äº‹ä»¶å¤„ç†
+		// °´Å¥
+		JButton button = new JButton("µÇÂ¼");
+		JButton button2 = new JButton("×¢²á");
+		// µÇÂ¼ÊÂ¼ş´¦Àí
 		button.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 //				System.out.println(e.getActionCommand());
-				// è·å–ç”¨æˆ·å
+				// »ñÈ¡ÓÃ»§Ãû
 				String text = jTextField.getText();
-				// è·å–å¯†ç 
+				// »ñÈ¡ÃÜÂë
 				String pwd = passwd.getText();
-				// ç”¨æˆ·åå’Œå¯†ç ä¸èƒ½ä¸ºç©º
+				// ÓÃ»§ÃûºÍÃÜÂë²»ÄÜÎª¿Õ
 				if(text.equals("")||pwd.equals("")){
-					System.out.println("ç”¨æˆ·åæˆ–è€…å¯†ç ä¸èƒ½ä¸ºç©º");
-					return;// ç»“æŸè¿™ä¸ªæ–¹æ³•
+					System.out.println("ÓÃ»§Ãû»òÕßÃÜÂë²»ÄÜÎª¿Õ");
+					return;// ½áÊøÕâ¸ö·½·¨
 				}
 
 
                 try {
 					boolean loginSuccess= readUserInfo(text, pwd);
 					if(loginSuccess){
-						System.out.printf("ç™»å½•æˆåŠŸï¼šç”¨æˆ·åä¸º %s, å¯†ç ä¸º %s\n",text,pwd);
-						//å¯¹è¯æ¡†
-						// å½“å‰ç±»æ˜¯åŒ¿åç±»ï¼Œä¼ é€’ç¬¬ä¸€ä¸ªå‚æ•°æœ‰2ç§æ–¹å¼ï¼Œ ç¬¬ä¸€ å¤–éƒ¨ç±»ã€‚this, ç¬¬äºŒç§é€šè¿‡æ„é€ å™¨ä¼ é€’this
-						JOptionPane.showMessageDialog(jFrameTutorial,"ç™»å½•æˆåŠŸ!","æˆåŠŸ",JOptionPane.INFORMATION_MESSAGE);
-						//å½“å‰çª—å£è¿›è¡Œéšè—
+						System.out.printf("µÇÂ¼³É¹¦£ºÓÃ»§ÃûÎª %s, ÃÜÂëÎª %s\n",text,pwd);
+						//¶Ô»°¿ò
+						// µ±Ç°ÀàÊÇÄäÃûÀà£¬´«µİµÚÒ»¸ö²ÎÊıÓĞ2ÖÖ·½Ê½£¬ µÚÒ» Íâ²¿Àà¡£this, µÚ¶şÖÖÍ¨¹ı¹¹ÔìÆ÷´«µİthis
+						JOptionPane.showMessageDialog(jFrameTutorial,"µÇÂ¼³É¹¦!","³É¹¦",JOptionPane.INFORMATION_MESSAGE);
+						//µ±Ç°´°¿Ú½øĞĞÒş²Ø
 						jFrameTutorial.setVisible(false);
-						// é‡Šæ”¾å½“å‰çª—å£çš„å†…å­˜èµ„æº
+						// ÊÍ·Åµ±Ç°´°¿ÚµÄÄÚ´æ×ÊÔ´
 //						jFrameTutorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 						// MVC
-						// åˆ›å»ºæ¨¡å‹å’Œè§†å›¾
+						// ´´½¨Ä£ĞÍºÍÊÓÍ¼
 						StudentDAO model = StudentDAO.getInstance();
 						StudentView view = new StudentView();
-						// åˆ›å»ºæ§åˆ¶å™¨
+						// ´´½¨¿ØÖÆÆ÷
 						new StudentController(view, model);
-						// æ˜¾ç¤ºè§†å›¾
+						// ÏÔÊ¾ÊÓÍ¼
 						view.setVisible(true);
 					}else{
-						System.out.printf("ç™»å½•å¤±è´¥: ä½ çš„ç”¨æˆ·åä¸º %s, å¯†ç ä¸º %s\n",text,pwd);
-						JOptionPane.showMessageDialog(Loginutorial.this,"ç™»å½•å¤±è´¥!","é”™è¯¯",JOptionPane.ERROR_MESSAGE);
+						System.out.printf("µÇÂ¼Ê§°Ü: ÄãµÄÓÃ»§ÃûÎª %s, ÃÜÂëÎª %s\n",text,pwd);
+						JOptionPane.showMessageDialog(Loginutorial.this,"µÇÂ¼Ê§°Ü!","´íÎó",JOptionPane.ERROR_MESSAGE);
 					}
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
@@ -84,21 +84,21 @@ public class Loginutorial extends JFrame {
 
 			}
 		});
-        // äº‹ä»¶æº æ˜¯button
-		// ç›‘è§†å™¨ RegisterListenerå¯¹è±¡
-		// å¤„ç†äº‹ä»¶æ¥å£ actionPerformed
+        // ÊÂ¼şÔ´ ÊÇbutton
+		// ¼àÊÓÆ÷ RegisterListener¶ÔÏó
+		// ´¦ÀíÊÂ¼ş½Ó¿Ú actionPerformed
 		RegisterListener listener = new RegisterListener();
 		button2.addActionListener(listener);
-		// æ ‡ç­¾
-		JLabel label = new JLabel("ç”¨æˆ·å");
-		Font f1= new Font("å¾®è½¯é›…é»‘",Font.BOLD,20);
+		// ±êÇ©
+		JLabel label = new JLabel("ÓÃ»§Ãû");
+		Font f1= new Font("Î¢ÈíÑÅºÚ",Font.BOLD,20);
 		label.setFont(f1);
 
-		JLabel label2 = new JLabel("å¯†ç ");
+		JLabel label2 = new JLabel("ÃÜÂë");
 		label2.setFont(f1);
-		// æ–‡æœ¬åŸŸ
+		// ÎÄ±¾Óò
 		JTextArea textArea = new JTextArea(5, 20);
-		textArea.setText("è¿™æ˜¯ä¸€ä¸ªç¤ºä¾‹æ–‡æœ¬åŒºï¼Œæ‚¨å¯ä»¥åœ¨è¿™é‡Œè¾“å…¥å¤šè¡Œæ–‡æœ¬ã€‚");
+		textArea.setText("ÕâÊÇÒ»¸öÊ¾ÀıÎÄ±¾Çø£¬Äú¿ÉÒÔÔÚÕâÀïÊäÈë¶àĞĞÎÄ±¾¡£");
 
 
 		this.add(label);
@@ -109,11 +109,11 @@ public class Loginutorial extends JFrame {
 		this.add(button2);
 
 	}
-	// æ„é€ æ–¹æ³•ï¼šå¯¹çª—å£è¿›è¡Œè®¾ç½®
+	// ¹¹Ôì·½·¨£º¶Ô´°¿Ú½øĞĞÉèÖÃ
     public Loginutorial(){
 		jFrameTutorial=this;
 		this.init();
-//		JFrame win1 = new JFrame("å¸¸ç”¨ç»„ä»¶");
+//		JFrame win1 = new JFrame("³£ÓÃ×é¼ş");
 		this.setBounds(60,100,188,108);
 		this.setSize(320,240);
 		this.setVisible(true);
@@ -122,7 +122,7 @@ public class Loginutorial extends JFrame {
 	}
 	public static void main(String[] args) {
 		jFrameTutorial = new Loginutorial();
-		jFrameTutorial.setTitle("å¸¸ç”¨ç»„ä»¶");
+		jFrameTutorial.setTitle("³£ÓÃ×é¼ş");
 		jFrameTutorial.setResizable(true);
 	}
 
@@ -130,13 +130,13 @@ public class Loginutorial extends JFrame {
 		FileReader fr = null;
 		BufferedReader br = null;
 
-		// FileReaderæ²¡æœ‰æä¾›è¯»å–ä¸€è¡Œçš„æ–¹æ³•ï¼Œå› æ­¤ç”¨ç¼“å†²æµèƒ½å¤ŸæŒ‰è¡Œè¯»å–
+		// FileReaderÃ»ÓĞÌá¹©¶ÁÈ¡Ò»ĞĞµÄ·½·¨£¬Òò´ËÓÃ»º³åÁ÷ÄÜ¹»°´ĞĞ¶ÁÈ¡
 		fr = new FileReader(USER_DATA_FILE);
 		br = new BufferedReader(fr);
 		String line;
 		boolean loginSuccess = false;
 
-		// é€è¡Œè¯»å–æ–‡ä»¶ï¼ŒéªŒè¯ç”¨æˆ·åå’Œå¯†ç 
+		// ÖğĞĞ¶ÁÈ¡ÎÄ¼ş£¬ÑéÖ¤ÓÃ»§ÃûºÍÃÜÂë
 		while ((line = br.readLine()) != null) {
 			String[] parts = line.split(":");
 //						if (parts.length == 2 && parts[0].equals(text) && parts[1].equals(pwd)) {
@@ -144,10 +144,10 @@ public class Loginutorial extends JFrame {
 //							break;
 //						}
 
-			// åœ¨loginæ–¹æ³•ä¸­éªŒè¯åŠ å¯†åçš„å¯†ç 
+			// ÔÚlogin·½·¨ÖĞÑéÖ¤¼ÓÃÜºóµÄÃÜÂë
 			String encryptedInput = encryptPassword(password);
 			if (parts[0].equals(username) && parts[1].equals(encryptedInput)) {
-				// ç™»å½•æˆåŠŸ
+				// µÇÂ¼³É¹¦
 				loginSuccess = true;
 				break;
 			}
@@ -162,11 +162,11 @@ public class Loginutorial extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			// step1
 //			System.out.println(e.getActionCommand());
-			//å½“å‰çª—å£è¿›è¡Œéšè—
+			//µ±Ç°´°¿Ú½øĞĞÒş²Ø
 			jFrameTutorial.setVisible(false);
-			// é‡Šæ”¾å½“å‰çª—å£çš„å†…å­˜èµ„æº
+			// ÊÍ·Åµ±Ç°´°¿ÚµÄÄÚ´æ×ÊÔ´
 //			jFrameTutorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			// æ˜¾ç¤ºæ³¨å†Œçª—å£
+			// ÏÔÊ¾×¢²á´°¿Ú
 			new RegistationFrame().setVisible(true);
 
 		}

@@ -9,7 +9,7 @@ public class DatabaseConnection {
     private static Connection connection;
 
     // 数据库连接信息
-    private static final String url = "jdbc:mysql://172.21.17.111:3306/recsys?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
+    private static final String url = "jdbc:mysql://192.168.1.105:3306/recsys?useSSL=false&serverTimezone=UTC&characterEncoding=utf8";
     private static final String username = "root";
     private static final String password = "123456";
 
@@ -33,9 +33,13 @@ public class DatabaseConnection {
     }
 
     // 关闭连接
-    public void closeConnection() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
+    public static void closeConnection(){
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
