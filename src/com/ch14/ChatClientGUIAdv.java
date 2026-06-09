@@ -2,17 +2,18 @@ package com.ch14;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 
-public class ChatClientGUI {
+public class ChatClientGUIAdv {
     private JFrame frame;
     private JTextArea chatArea;
     private JTextField inputField;
     private JButton sendButton;
     private JTextField nameField;
     private JButton connectButton;
+    private JList<String> userList;           // 新增：用户列表
+    private DefaultListModel<String> listModel; // 新增：列表模型
     private Socket socket;
     private PrintWriter out;
     private BufferedReader in;
@@ -21,21 +22,36 @@ public class ChatClientGUI {
     private String clientName;
 
     public static void main(String[] args) {
-        new ChatClientGUI().initialize();
+        new ChatClientGUIAdv().initialize();
     }
 
     public void initialize() {
         // 创建主窗口
         frame = new JFrame("聊天客户端");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(700, 400);
         frame.setLayout(new BorderLayout());
 
-        // 聊天区域
+        // 中间分割面板：左侧聊天，右侧用户列表
+        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+        splitPane.setDividerLocation(520);
+
+        // 聊天区域（左侧）
         chatArea = new JTextArea();
         chatArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(chatArea);
-        frame.add(scrollPane, BorderLayout.CENTER);
+        JScrollPane chatScrollPane = new JScrollPane(chatArea);
+        chatScrollPane.setBorder(BorderFactory.createTitledBorder("聊天内容"));
+        splitPane.setLeftComponent(chatScrollPane);
+
+        // 用户列表区域（右侧）- 新增
+        listModel = new DefaultListModel<>();
+        userList = new JList<>(listModel);
+        userList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JScrollPane userScrollPane = new JScrollPane(userList);
+        userScrollPane.setBorder(BorderFactory.createTitledBorder("在线用户"));
+        splitPane.setRightComponent(userScrollPane);
+
+        frame.add(splitPane, BorderLayout.CENTER);
 
         // 输入面板
         JPanel inputPanel = new JPanel(new BorderLayout());
@@ -74,7 +90,6 @@ public class ChatClientGUI {
         if (clientName.isEmpty()) {
             chatArea.append("请输入有效的昵称\n");
             chatArea.setCaretPosition(chatArea.getDocument().getLength());
-
             return;
         }
 
@@ -102,8 +117,8 @@ public class ChatClientGUI {
                     try {
                         String message;
                         while ((message = in.readLine()) != null) {
-                            chatArea.append(message+"\n");
-                            chatArea.setCaretPosition(chatArea.getDocument().getLength());
+                            // 新增：解析服务器消息类型
+                            handleMessage(message);
                         }
                     } catch (IOException e) {
                         chatArea.append("与服务器的连接已断开\n");
@@ -117,6 +132,7 @@ public class ChatClientGUI {
                         inputField.setEnabled(false);
                         sendButton.setEnabled(false);
                         connectButton.setEnabled(true);
+                        nameField.setEnabled(true);
                     }
                 }
             }).start();
@@ -126,15 +142,36 @@ public class ChatClientGUI {
         }
     }
 
+    // 新增：处理不同类型的消息
+    private void handleMessage(String message) {
+        SwingUtilities.invokeLater(() -> {
+            // 判断消息类型：用户列表更新（以特殊前缀标识）
+            if (message.startsWith("[USER_LIST]")) {
+                updateUserList(message.substring(11)); // 去掉前缀
+            } else {
+                // 普通聊天消息
+                chatArea.append(message + "\n");
+                chatArea.setCaretPosition(chatArea.getDocument().getLength());
+            }
+        });
+    }
+
+    // 新增：更新用户列表
+    private void updateUserList(String userListStr) {
+        listModel.clear();
+        if (userListStr != null && !userListStr.isEmpty()) {
+            String[] users = userListStr.split(",");
+            for (String user : users) {
+                listModel.addElement(user.trim());
+            }
+        }
+    }
+
     private void sendMessage() {
         String message = inputField.getText().trim();
         if (!message.isEmpty()) {
             out.println(message);
-            // 本地显示自己发送消息
-            chatArea.append("我: " + message + "\n");
-            chatArea.setCaretPosition(chatArea.getDocument().getLength());
             inputField.setText("");
         }
     }
-
 }

@@ -7,33 +7,33 @@ import java.net.InetAddress;
 
 public class UDPServer {
     public static void main(String[] args) {
-        // æŒ‡å®šæœåŠ¡å™¨ç«¯å£
+        // Ö¸¶¨·şÎñÆ÷¶Ë¿Ú
         final int serverPort = 9876;
 
         try (DatagramSocket serverSocket = new DatagramSocket(serverPort)) {
-            System.out.println("UDPæœåŠ¡å™¨å·²å¯åŠ¨ï¼Œç›‘å¬ç«¯å£: " + serverPort);
+            System.out.println("UDP·şÎñÆ÷ÒÑÆô¶¯£¬¼àÌı¶Ë¿Ú: " + serverPort);
 
             byte[] receiveData = new byte[1024];
 
             while (true) {
-                // å‡†å¤‡æ¥æ”¶æ•°æ®åŒ…
+                // ×¼±¸½ÓÊÕÊı¾İ°ü
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-                // æ¥æ”¶æ•°æ®
+                // ½ÓÊÕÊı¾İ
                 serverSocket.receive(receivePacket);
 
-                // è§£ææ”¶åˆ°çš„æ•°æ®
+                // ½âÎöÊÕµ½µÄÊı¾İ
                 String clientMessage = new String(receivePacket.getData(), 0, receivePacket.getLength());
                 InetAddress clientAddress = receivePacket.getAddress();
                 int clientPort = receivePacket.getPort();
 
-                System.out.println("æ”¶åˆ°æ¥è‡ª " + clientAddress + ":" + clientPort + " çš„æ¶ˆæ¯: " + clientMessage);
+                System.out.println("ÊÕµ½À´×Ô " + clientAddress + ":" + clientPort + " µÄÏûÏ¢: " + clientMessage);
 
-                // å‡†å¤‡å“åº”æ•°æ®
-                String responseMessage = "æœåŠ¡å™¨å·²æ”¶åˆ°ä½ çš„æ¶ˆæ¯: " + clientMessage;
+                // ×¼±¸ÏìÓ¦Êı¾İ
+                String responseMessage = "·şÎñÆ÷ÒÑÊÕµ½ÄãµÄÏûÏ¢: " + clientMessage;
                 byte[] sendData = responseMessage.getBytes();
 
-                // å‘é€å“åº”
+                // ·¢ËÍÏìÓ¦
                 DatagramPacket sendPacket = new DatagramPacket(
                         sendData,
                         sendData.length,
@@ -43,7 +43,7 @@ public class UDPServer {
                 serverSocket.send(sendPacket);
             }
         } catch (IOException e) {
-            System.err.println("æœåŠ¡å™¨å¼‚å¸¸: " + e.getMessage());
+            System.err.println("·şÎñÆ÷Òì³£: " + e.getMessage());
         }
     }
 }

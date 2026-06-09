@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class UDPClient {
     public static void main(String[] args) {
-        // æœåŠ¡å™¨åœ°å€å’Œç«¯å£
+        // ·şÎñÆ÷µØÖ·ºÍ¶Ë¿Ú
         final String serverHost = "localhost";
         final int serverPort = 9876;
 
@@ -14,10 +14,10 @@ public class UDPClient {
             InetAddress serverAddress = InetAddress.getByName(serverHost);
             Scanner scanner = new Scanner(System.in);
 
-            System.out.println("UDPå®¢æˆ·ç«¯å·²å¯åŠ¨ï¼Œè¾“å…¥æ¶ˆæ¯å‘é€åˆ°æœåŠ¡å™¨(è¾“å…¥'exit'é€€å‡º):");
+            System.out.println("UDP¿Í»§¶ËÒÑÆô¶¯£¬ÊäÈëÏûÏ¢·¢ËÍµ½·şÎñÆ÷(ÊäÈë'exit'ÍË³ö):");
 
             while (true) {
-                // è¯»å–ç”¨æˆ·è¾“å…¥
+                // ¶ÁÈ¡ÓÃ»§ÊäÈë
                 System.out.print("> ");
                 String message = scanner.nextLine();
 
@@ -25,7 +25,7 @@ public class UDPClient {
                     break;
                 }
 
-                // å‘é€æ•°æ®
+                // ·¢ËÍÊı¾İ
                 byte[] sendData = message.getBytes();
                 DatagramPacket sendPacket = new DatagramPacket(
                         sendData,
@@ -35,11 +35,11 @@ public class UDPClient {
                 );
                 clientSocket.send(sendPacket);
 
-                // å‡†å¤‡æ¥æ”¶å“åº”
+                // ×¼±¸½ÓÊÕÏìÓ¦
                 byte[] receiveData = new byte[1024];
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
 
-                // æ¥æ”¶å“åº”(è®¾ç½®è¶…æ—¶æ—¶é—´ï¼Œå•ä½æ¯«ç§’)
+                // ½ÓÊÕÏìÓ¦(ÉèÖÃ³¬Ê±Ê±¼ä£¬µ¥Î»ºÁÃë)
                 clientSocket.setSoTimeout(5000);
                 try {
                     clientSocket.receive(receivePacket);
@@ -48,15 +48,15 @@ public class UDPClient {
                             0,
                             receivePacket.getLength()
                     );
-                    System.out.println("æœåŠ¡å™¨å“åº”: " + response);
+                    System.out.println("·şÎñÆ÷ÏìÓ¦: " + response);
                 } catch (SocketTimeoutException e) {
-                    System.out.println("è¯·æ±‚è¶…æ—¶ï¼Œæœªæ”¶åˆ°æœåŠ¡å™¨å“åº”");
+                    System.out.println("ÇëÇó³¬Ê±£¬Î´ÊÕµ½·şÎñÆ÷ÏìÓ¦");
                 }
             }
         } catch (UnknownHostException e) {
-            System.err.println("æœªçŸ¥ä¸»æœº: " + serverHost);
+            System.err.println("Î´ÖªÖ÷»ú: " + serverHost);
         } catch (IOException e) {
-            System.err.println("å®¢æˆ·ç«¯å¼‚å¸¸: " + e.getMessage());
+            System.err.println("¿Í»§¶ËÒì³£: " + e.getMessage());
         }
     }
 }

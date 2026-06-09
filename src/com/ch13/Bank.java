@@ -1,7 +1,5 @@
 package com.ch13;
 
-import javax.swing.table.TableRowSorter;
-
 public class Bank implements Runnable{
     int money=200;
     public void setMoney(int money) {
