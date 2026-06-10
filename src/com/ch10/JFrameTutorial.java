@@ -1,8 +1,5 @@
 package com.ch10;
 
-import com.ch10.controller.StudentController;
-import com.ch10.model.StudentDAO;
-import com.ch10.view.StudentView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -60,17 +57,6 @@ public class JFrameTutorial extends JFrame {
 				if(text.equals(RegistationFrame.ACCOUNT[0]) && pwd.equals(RegistationFrame.ACCOUNT[1])){
 					System.out.printf("登录成功：用户名为 %s, 密码为 %s\n",text,pwd);
 					JOptionPane.showMessageDialog(JFrameTutorial.this,"登录成功!","成功",JOptionPane.INFORMATION_MESSAGE);
-					jFrameTutorial.setVisible(false);
-					jFrameTutorial.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-					StudentDAO model = StudentDAO.getInstance();
-					StudentView view = new StudentView();
-
-					// 创建控制器
-					new StudentController(view, model);
-
-					// 显示视图
-					view.setVisible(true);
-
 				}else{
 					System.out.printf("登录失败: 你的用户名为 %s, 密码为 %s\n",text,pwd);
 					JOptionPane.showMessageDialog(JFrameTutorial.this,"登录失败!","错误",JOptionPane.ERROR_MESSAGE);
@@ -107,7 +93,7 @@ public class JFrameTutorial extends JFrame {
 //		this.add(new JScrollPane(textArea));
 	}
 	// 构造方法：对窗口进行设置
-    public JFrameTutorial(){
+	JFrameTutorial(){
 		this.init();
 //		JFrame win1 = new JFrame("常用组件");
 		this.setBounds(60,100,188,108);

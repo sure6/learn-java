@@ -1,3 +1,5 @@
+package com.leesure;
+
 public class DataValidator {
     public static void main(String[] args) {
         // [数据初始化]
